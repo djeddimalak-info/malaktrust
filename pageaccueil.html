@@ -1,0 +1,403 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Trust Education</title>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>  
+        body {  
+            display: flex;  
+            flex-direction: column;  
+            height: 100vh;  
+            margin: 0;  
+            background-color: #ffffff;
+        }  
+
+        .navbar {  
+            background-color: #f8f9fa;  
+            width: 100%;  
+            padding-left: 10px;  
+            padding-right: 10px;  
+        }  
+
+        .navbar-brand img {  
+            width: 40px;  
+            height: auto;  
+            margin-right: 10px;  
+        }  
+
+        .navbar-nav .nav-link {  
+            color: #00008B;  
+            margin-right: 5px;  
+            font-weight: bold;  
+            font-size: 0.9em;  
+            padding: 8px 12px;  
+        }  
+
+        .container {  
+            flex-grow: 1;  
+            padding: 20px;  
+            margin-top: 20px;  
+        }  
+
+        .card {  
+            position: relative;  
+            border: none;  
+            border-radius: 15px;  
+            overflow: hidden;  
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+            margin: 0;  
+            height: 200px;  
+            width: 230px;  
+        }  
+
+        .row > .col-md-3 {  
+            padding-left: 5px;  
+            padding-right: 5px;  
+            margin-bottom: 10px;  
+        }  
+
+        .card img.reduced {  
+            width: 60%;  
+            height: auto;  
+            display: block;  
+            margin: auto;  
+            padding: 10px 0;  
+        }  
+
+        .button-container {  
+            display: flex;  
+            justify-content: flex-start;  
+            align-items: center;  
+            margin-top: 10px;  
+            padding-left: 10px;  
+        }  
+
+        .btn-dark-blue {  
+            background-color: #093c70;  
+            color: #ffffff;  
+            width: 80%;  
+            transition: background-color 0.3s ease, transform 0.3s ease;  
+        }  
+
+        .btn-dark-blue:hover {  
+            background-color: #002244;  
+            transform: scale(1.1);  
+        }  
+
+        h3 {  
+            color: #002244;  
+        }  
+
+        .welcome-message {  
+            margin-top: 20px;  
+            text-align: center;  
+            font-size: 1.0em;  
+            color: #000000;  
+            font-family: serif;  
+        }  
+
+        .info-section {  
+            display: flex;  
+            justify-content: space-between;  
+            margin-top: 40px;  
+        }  
+
+        .info-card {  
+            background-color: #d8f6f5;  
+            color: rgb(3, 0, 0);  
+            border-radius: 10px;  
+            padding: 20px;  
+            width: 48%;  
+        }  
+
+        .info-item {  
+            cursor: pointer;  
+            margin: 10px 0;  
+            transition: color 0.3s, transform 0.3s;  
+        }  
+
+        .info-item:hover {  
+            text-decoration: underline;  
+            color: #0056b3;  
+            transform: scale(1.05);  
+        }  
+
+        .info-divider {  
+            border-top: 1px solid lightgray;  
+            margin: 10px 0;  
+        }  
+
+        .answer {  
+            display: none;  
+            margin-top: 5px;  
+            padding: 10px;  
+            background-color: #f0f0f0;  
+            border-radius: 5px;  
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);  
+            opacity: 0; /* Initial opacity for animation */  
+            transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out; /* Transition for opacity and height */  
+            max-height: 0; /* Initially hide the element */  
+            overflow: hidden; /* Prevent content overflow */  
+        }  
+
+        .answer.show {  
+            display: block; /* Show on activation */  
+            opacity: 1; /* Fade in opacity */  
+            max-height: 300px; /* Maximum height for expansion */  
+        }  
+        .footer-section {  
+        background-color: #003366; /* Bleu foncé */  
+        color: white; /* Texte blanc */  
+        padding: 20px;  
+        margin-top: 30px; /* Espace entre le contenu et le footer */  
+    }  
+
+    .footer-content {  
+        display: flex; /* Utilisation d'un flexbox pour le contenu */  
+        justify-content: space-between;  
+        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+        padding: 20px 0;  
+    }  
+
+    .footer-info,  
+    .footer-links,  
+    .footer-contact {  
+        flex: 1; /* Équitablement répartir l'espace */  
+        min-width: 200px; /* Largeur minimale */  
+        margin: 10px; /* Espacement autour de chaque section */  
+    }  
+
+    .footer-links ul {  
+        list-style-type: none; /* Suppression des puces */  
+        padding: 0; /* Suppression du padding */  
+    }  
+
+    .footer-links a {  
+        color: white; /* Couleur des liens */  
+        text-decoration: none; /* Pas de soulignement */  
+    }  
+
+    .footer-links a:hover {  
+        text-decoration: underline; /* Soulignement lors du survol */  
+    }  
+
+    .footer-bottom {  
+        text-align: center; /* Centre le texte */  
+        margin-top: 20px; /* Espace au-dessus */  
+    }  
+
+    hr {  
+        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
+        margin: 10px 0; /* Espacement autour de la ligne */  
+    } 
+        .flag {  
+            width: 20px;  
+            height: auto;  
+            margin-left: 8px;  
+            vertical-align: middle;  
+        }  
+    </style>
+    <script>  
+    function toggleAnswer(answerId) {  
+        const answerElement = document.getElementById(answerId);  
+        answerElement.classList.toggle('show');  
+    }  
+</script>  
+</head>  
+<body>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="your-logo.png" alt="Logo" />
+        </a>
+        <span style="color:rgb(5, 39, 50); font-size: 1.3em;" class="navbar-text">Trust Education</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="pageaccueil.html">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="propos.html">À propos</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUniversities" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Universités
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownUniversities">
+                        <a class="dropdown-item" href="pologne.html">Université polonaise</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="russie.html">Université russe</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Langues
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownLanguages">
+                        <a class="dropdown-item" href="applicationslangues.html">Applications de langues</a>
+                        <a class="dropdown-item" href="ecoleslangues.html">Écoles de langues</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Payes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownLanguages">
+                        <a class="dropdown-item" href="Payes.html">Russie</a>
+                        <a class="dropdown-item" href="payes1.html">Pologne</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Connexion
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="creercompteAA.php">Assistant</a>
+                        <a class="dropdown-item" href="creercompte.php">Étudiant</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dashoard
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="login.php?redirect=dashbord.php"> Dashoard</a>
+                        <a class="dropdown-item" href="login.php?redirect=DashboardTraduction.php"> Dashoard Traduction</a>
+                        <a class="dropdown-item" href="login.php?redirect=dashboardpsy.php"> Dashoard Psychologue</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>  
+<br><br><br>  
+<div class="container">  
+    <div class="welcome-message">  
+        <h3>Bienvenue sur TrustEducation</h3>  
+        <p>Chez TrustEducation, nous comprenons que les démarches administratives peuvent être complexes.  
+            <br> C'est pourquoi nous sommes là pour vous accompagner et vous fournir des services fiables.</p>  
+    </div>  
+    <br>  
+     
+    <div class="row justify-content-center">  
+        <div class="col-md-3">  
+            <div class="card">  
+                <img class="original" src="Hypnotherapy-1.png" alt="Argent" />  
+            </div>  
+            <div class="button-container">  
+              <button class="btn btn-dark-blue mt-2"   onclick="window.location.href='Psycologue.php'" >Psychologue</button>  
+            </div>  
+        </div>  
+
+        <div class="col-md-3">  
+            <div class="card">  
+                <img class="reduced" src="favpng_language-icon-english.png" alt="Traduction" />  
+            </div>  
+            <div class="button-container">  
+                <button class="btn btn-dark-blue mt-2"   onclick="window.location.href='Traduction.php'">Traduisez vos documents</button>
+            </div>  
+        </div>  
+
+        <div class="col-md-3">  
+            <div class="card">  
+                <img class="reduced" src="ClipartKey_1253568.png" alt="Visa" />  
+            </div>  
+            <div class="button-container">  
+                <button class="btn btn-dark-blue mt-2" onclick="window.location.href='Démarches.html'">Obtenez votre visa</button>  
+            </div>  
+        </div>  
+
+        <div class="col-md-3">  
+            <div class="card">  
+                <img class="reduced" src="Formulaire-PNG.png" alt="Formulaire" />  
+            </div>  
+            <div class="button-container">  
+                <button class="btn btn-dark-blue mt-2" onclick="window.location.href='créerdemande.php'">Créer une demande</button>  
+            </div>  
+        </div>  
+    </div>  
+    <br><br>  
+    <div class="info-section">  
+        <div class="info-card">  
+            <h4>Éducation en Russie <img src="https://upload.wikimedia.org/wikipedia/en/f/f3/Flag_of_Russia.svg" alt="Drapeau de la Russie" class="flag"/></h4>  
+            <br>  
+            <div class="info-item" onclick="toggleAnswer('answer1')">Comment choisir la ville idéale pour vivre et étudier ?</div>  
+            <div class="answer" id="answer1">Il est important de considérer vos priorités personnelles, comme le climat, la langue et le coût de la vie. Les villes comme Moscou et Saint-Pétersbourg sont populaires, mais d'autres villes comme Kazan offrent une expérience unique.</div>  
+            <div class="info-divider"></div>  
+
+            <div class="info-item" onclick="toggleAnswer('answer2')">Quel est le coût de l'éducation en Russie ?</div>  
+            <div class="answer" id="answer2">Les frais de scolarité en Russie varient considérablement en fonction de l'université et du programme, allant de 2000 à 8000 USD par an.</div>  
+            <div class="info-divider"></div>  
+
+            <div class="info-item" onclick="toggleAnswer('answer3')">Quelle est la durée de la préparation à l'université ?</div>  
+            <div class="answer" id="answer3">La préparation pour l'université peut durer de 6 mois à un an, selon le niveau de langue requis et le type de programme.</div>  
+            <div class="info-divider"></div>  
+
+            <div class="info-item" onclick="toggleAnswer('answer4')">Quels sont les processus d'admission dans les universités russes ?</div>  
+            <div class="answer" id="answer4">Le processus d'admission inclut la soumission de documents académiques, de tests de langue et éventuellement des entretiens.</div>  
+        </div>  
+
+        <div class="info-card">  
+            <h4>Éducation en Pologne <img src="https://upload.wikimedia.org/wikipedia/en/1/12/Flag_of_Poland.svg" alt="Drapeau de la Pologne" class="flag"/></h4>  
+            <br>  
+            <div class="info-item" onclick="toggleAnswer('answer5')">Comment sélectionner la meilleure ville pour étudier en Pologne ?</div>  
+            <div class="answer" id="answer5">Les grandes villes comme Varsovie, Cracovie et Wrocław sont recommandées pour leurs universités réputées et leur vie étudiante dynamique.</div>  
+            <div class="info-divider"></div>  
+
+            <div class="info-item" onclick="toggleAnswer('answer6')">Quels sont les frais de scolarité en Pologne ?</div>  
+            <div class="answer" id="answer6">Les frais de scolarité varient de 2000 à 5000 EUR par an, selon le programme d'études choisi.</div>  
+            <div class="info-divider"></div>  
+
+            <div class="info-item" onclick="toggleAnswer('answer7')">Quels documents sont nécessaires pour s'inscrire dans les universités polonaises ?</div>  
+            <div class="answer" id="answer7">Vous aurez besoin de votre diplôme d'études secondaires, d'une preuve de paiement des frais de scolarité et de documents d'identité.</div>  
+            <div class="info-divider"></div>  
+
+            <div class="info-item" onclick="toggleAnswer('answer8')">Est-il nécessaire de parler polonais pour étudier en Pologne ?</div>  
+            <div class="answer" id="answer8">De nombreux programmes sont offerts en anglais, donc parler polonais n'est pas toujours nécessaire, mais c'est un plus.</div>  
+        </div>  
+    </div>  
+</div>  
+
+<div class="footer-section">  
+    <div class="footer-content">  
+        <div class="footer-info">  
+            <h5><span class="fa fa-info-circle"></span> À Propos de Nous</h5>  
+            <hr>  
+            <p>Nous sommes spécialisés dans l'accompagnement des étudiants pour leurs démarches d'études en Pologne et en Russie.</p>  
+        </div>  
+        <div class="footer-links">  
+            <h5><span class="fa fa-link"></span> Liens Utiles</h5>  
+            <hr>  
+            <ul>  
+                <li><a href="https://www.instagram.com/votreprofil" target="_blank">  Instagram <span class="fa fa-instagram"></span></a></li>  
+                <li><a href="https://wa.me/123456789" target="_blank"><span class="fa fa-whatsapp"></span> WhatsApp</a></li>  
+                <li><a href="propos.html">À Propos</a></li>  
+            </ul>  
+        </div>  
+        <div class="footer-contact">  
+            <h5><span class="fa fa-envelope"></span> Contact</h5>  
+            <hr>  
+            <p>Email: <a href="mailto:contact@votreorganisation.com">contact@votreorganisation.com</a></p>  
+            <p>Téléphone: <a href="tel:+123456789">+33 1 23 45 67 89</a></p>  
+        </div>  
+    </div>  
+    <div class="footer-bottom">  
+        <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>  
+    </div>  
+</div>
+
+<!-- Scripts Bootstrap -->  
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>  
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+<script>   document.getElementById('current-year').textContent = new Date().getFullYear();</script>   
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+
+</body>  
+</html>

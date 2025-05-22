@@ -1,0 +1,229 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>À Propos de Nous</title>  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">  
+    <style>  
+        body {  
+            background-color: #ffffff;  
+            color: #003366;  
+        }  
+
+        h1 {  
+            font-family: 'Playfair Display', serif;  
+            color: #003366;  
+            margin-bottom: 20px;  
+            font-size: 2rem;  
+            opacity: 0;  
+            transform: translateY(20px);  
+            animation: fadeInUp 0.6s forwards;  
+        }  
+
+        h2 {  
+            font-family: 'Playfair Display', serif;  
+            color: #003366;  
+            margin-bottom: 15px;  
+            font-size: 1.5rem;  
+            opacity: 0;  
+            transform: translateY(20px);  
+            animation: fadeInUp 0.6s forwards;  
+        }  
+
+        @keyframes fadeInUp {  
+            from {  
+                opacity: 0;  
+                transform: translateY(20px);  
+            }  
+            to {  
+                opacity: 1;  
+                transform: translateY(0);  
+            }  
+        }  
+
+        .container {  
+            margin-top: 50px;  
+            margin-bottom: 50px;  
+        }  
+
+        .about-section {  
+            background-color: #eaf4fa;  
+            border-radius: 10px;  
+            padding: 30px;  
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+        }  
+
+        .team-member {  
+            border: 1px solid #003366;  
+            border-radius: 10px;  
+            padding: 15px;  
+            margin-bottom: 20px;  
+            text-align: center;  
+            opacity: 0;  
+            transform: translateY(20px);  
+            animation: fadeInUp 0.6s forwards;  
+        }  
+
+        .team-member img {  
+            border-radius: 50%;  
+            max-width: 100px;  
+            margin-bottom: 10px;  
+        }  
+
+        .mission, .history, .values, .services, .testimonials, .contact {  
+            margin-bottom: 30px;  
+            opacity: 0;  
+            transform: translateY(20px);  
+            animation: fadeInUp 0.6s forwards;  
+        }  
+
+        .testimonial {  
+            border-left: 3px solid #003366;  
+            padding-left: 15px;  
+            margin-bottom: 20px;  
+            font-style: italic;  
+        }  
+
+        .mission { animation-delay: 0.2s; }  
+        .history { animation-delay: 0.4s; }  
+        .values { animation-delay: 0.6s; }  
+        .services { animation-delay: 0.8s; }  
+        .testimonials { animation-delay: 1.0s; }  
+        .contact { animation-delay: 1.2s; }  
+        .footer-section {  
+        background-color: #003366; /* Bleu foncé */  
+        color: white; /* Texte blanc */  
+        padding: 20px;  
+        margin-top: 30px; /* Espace entre le contenu et le footer */  
+    }  
+
+    .footer-content {  
+        display: flex; /* Utilisation d'un flexbox pour le contenu */  
+        justify-content: space-between;  
+        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+        padding: 20px 0;  
+    }  
+
+    .footer-info,  
+    .footer-links,  
+    .footer-contact {  
+        flex: 1; /* Équitablement répartir l'espace */  
+        min-width: 200px; /* Largeur minimale */  
+        margin: 10px; /* Espacement autour de chaque section */  
+    }  
+
+    .footer-links ul {  
+        list-style-type: none; /* Suppression des puces */  
+        padding: 0; /* Suppression du padding */  
+    }  
+
+    .footer-links a {  
+        color: white; /* Couleur des liens */  
+        text-decoration: none; /* Pas de soulignement */  
+    }  
+
+    .footer-links a:hover {  
+        text-decoration: underline; /* Soulignement lors du survol */  
+    }  
+
+    .footer-bottom {  
+        text-align: center; /* Centre le texte */  
+        margin-top: 20px; /* Espace au-dessus */  
+    }  
+
+    hr {  
+        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
+        margin: 10px 0; /* Espacement autour de la ligne */  
+    } 
+    </style>  
+</head>  
+
+<body>  
+
+    <div class="container">  
+        <h1 class="text-center">À Propos de Nous</h1>  
+
+        <div class="about-section">  
+            <div class="mission">  
+                <h2><i class="fas fa-bullseye"></i> Notre Mission</h2>  
+                <p>Notre mission est de faciliter l'accès aux études en Pologne et en Russie grâce à des démarches simplifiées et accompagnées. Nous croyons que chaque étudiant mérite un soutien complet pour réussir son projet éducatif.</p>  
+            </div>  
+
+            <div class="history">  
+            </i> Notre Histoire</h2>  
+            <p>Fondée en 2025, notre agence a été créée par un groupe d'experts passionnés par l'éducation internationale. Nous avons pour objectif d'assister nos clients tout au long de leur parcours, en leur offrant un soutien personnalisé et toutes les informations nécessaires concernant les universités, les procédures d'inscription et la vie quotidienne en Pologne et en Russie.</p>  
+        </div>  
+
+        <div class="values">  
+            <h2><i class="fas fa-hand-holding-heart"></i> Nos Valeurs</h2>  
+            <ul>  
+                <li>Accompagnement: Nous sommes là à chaque étape, de l'inscription à l'intégration.</li>  
+                <li>Confiance: Nous bâtissons une relation de confiance avec nos étudiants et leurs familles.</li>  
+                <li>Empathie: Nous comprenons les défis auxquels nos clients font face et nous les soutenons avec compréhension.</li>  
+                <li>Excellence: Nous nous engageons à fournir des services de la plus haute qualité.</li>  
+            </ul>  
+        </div>  
+
+        <div class="services">  
+            <h2><i class="fas fa-concierge-bell"></i> Nos Services</h2>  
+            <ul>  
+                <li>Assistance dans les démarches d'inscription aux universités en Pologne et en Russie</li>  
+                <li>Consultations avec des psychologues pour accompagner nos étudiants</li>  
+                <li>Organisation de groupes d'échange d'expérience entre étudiants</li>  
+                <li>Promotion de formations et d'ateliers liés à la gestion de projet et à l'adaptation en milieu universitaire</li>  
+                <li>Soutien pour les demandes de visa et l'intégration culturelle</li>  
+            </ul>  
+        </div>  
+
+         
+
+        <div class="contact">  
+            <h2><i class="fas fa-envelope"></i> Nous Contacter</h2>  
+            <p>Pour plus d'informations ou pour discuter de votre projet d'études, n'hésitez pas à nous contacter :</p>  
+            <p>Email: <a href="mailto:contact@votreorganisation.com">contact@votreorganisation.com</a></p>  
+            <p>Téléphone: <a href="tel:+123456789">+33 1 23 45 67 89</a></p>  
+          
+        </div>  
+    </div>  
+</div>  
+  
+<div class="footer-section">  
+    <div class="footer-content">  
+        <div class="footer-info">  
+            <h5><i class="fas fa-info-circle"></i> À Propos de Nous</h5>  
+            <hr>  
+            <p>Nous sommes spécialisés dans l'accompagnement des étudiants pour leurs démarches d'études en Pologne et en Russie.</p>  
+        </div>  
+        <div class="footer-links">  
+            <h5><i class="fas fa-link"></i> Liens Utiles</h5>  
+            <hr>  
+            <ul>  
+                <li><a href="https://www.instagram.com/votreprofil" target="_blank">  Instagram <i class="fab fa-instagram"></i></a></li>  
+                <li><a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>  
+                <li><a href="propos.html">À Propos</a></li>  
+            </ul>  
+        </div>  
+        <div class="footer-contact">  
+            <h5><i class="fas fa-envelope"></i> Contact</h5>  
+            <hr>  
+            <p>Email: <a href="mailto:contact@votreorganisation.com">contact@votreorganisation.com</a></p>  
+            <p>Téléphone: <a href="tel:+123456789">+33 1 23 45 67 89</a></p>  
+        </div>  
+    </div>  
+    <div class="footer-bottom">  
+        <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>  
+    </div>  
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>  
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <script>   document.getElementById('current-year').textContent = new Date().getFullYear();</script>  
+</body>  
+
+</html>  

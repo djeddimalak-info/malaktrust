@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Université d’État de médecine de bachkir</title>
+    <style>
+        body {
+            font-family: serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .title-section {
+            text-align: center;
+            margin: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .title-section h3 {
+            font-size: 1.8em;
+            color: #1c1c8c;
+            margin-bottom: 10px;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .points {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 200px;
+        }
+        .point {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+        }
+        .point:first-child {
+            background-color: #bcd5fd;
+        }
+        .point:nth-child(2) {
+            background-color: #5c8bf0;
+        }
+        .point:last-child {
+            background-color: #5a81f7;
+        }
+
+        .point2 {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+        }
+        .point2:first-child {
+            background-color: #5a81f7;
+        }
+        .point2:nth-child(2) {
+            background-color: #5c8bf0;
+        }
+        .point2:last-child {
+            background-color: #bcd5fd;
+        }
+
+        .container img {
+            width: 270px;
+            height: 300px;
+            border: 5px solid #fafafc;
+            border-radius: 15px;
+            animation: slideDown 1.5s ease-in-out;
+            margin: 0 5%;
+        }
+        .intro {
+            background-color: #141454;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+        .intro p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .numbers {
+            color: #24e286;
+            font-weight: bold;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        .specialties {  
+            width: 100%;  
+            padding: 20px;  
+            background-color: #ffffff;  
+            display: flex;  
+            flex-direction: column;  
+            align-items: center;  
+        }  
+        .specialties .row {  
+            display: flex;  
+            flex-wrap: wrap;  
+            justify-content: center; /* Centre horizontalement */  
+        }  
+        
+
+        .card {  
+            transition: transform 0.3s;  
+            cursor: pointer;  
+            background-color: #003366; /* Bleu foncé */  
+            border: none;  
+            border-radius: 5px;  
+            margin: 10px; /* Espace entre les cartes */  
+            padding: 15px; /* Padding pour les cartes */  
+            text-align: center;  
+            width: 180px; /* Largeur des cartes */  
+            color: white; /* Texte en blanc */  
+            font-size: 0.9em; /* Taille du texte des cartes réduite */  
+        }  
+        .card h5 {  
+            font-size: 1em; /* Taille du texte des titres */  
+            margin: 0; /* Enlève la marge par défaut */  
+        }  
+        .card:hover {  
+            transform: scale(1.05);  
+        }  
+        
+        .footer-section {  
+        background-color: #003366; /* Bleu foncé */  
+        color: white; /* Texte blanc */  
+        padding: 20px;  
+        margin-top: 30px; /* Espace entre le contenu et le footer */  
+    }  
+
+    .footer-content {  
+        display: flex; /* Utilisation d'un flexbox pour le contenu */  
+        justify-content: space-between;  
+        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+        padding: 20px 0;  
+    }  
+
+    .footer-info,  
+    .footer-links,  
+    .footer-contact {  
+        flex: 1; /* Équitablement répartir l'espace */  
+        min-width: 200px; /* Largeur minimale */  
+        margin: 10px; /* Espacement autour de chaque section */  
+    }  
+
+    .footer-links ul {  
+        list-style-type: none; /* Suppression des puces */  
+        padding: 0; /* Suppression du padding */  
+    }  
+
+    .footer-links a {  
+        color: white; /* Couleur des liens */  
+        text-decoration: none; /* Pas de soulignement */  
+    }  
+
+    .footer-links a:hover {  
+        text-decoration: underline; /* Soulignement lors du survol */  
+    }  
+
+    .footer-bottom {  
+        text-align: center; /* Centre le texte */  
+        margin-top: 20px; /* Espace au-dessus */  
+    }  
+
+    hr {  
+        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
+        margin: 10px 0; /* Espacement autour de la ligne */  
+    } 
+    .dropdown-menu {  
+    display: none; /* Masquer le menu par défaut */  
+    position: absolute; /* Positionner par rapport à la carte */  
+    background-color: white;  
+    border-width: 1px; /* Épaisseur de la bordure */  
+    border-color: #010518; /* Couleur de la bordure */  
+    width: 300px; /* Largeur du menu */  
+    font-family: serif; /* Police sériée */  
+    font-size: large; /* Taille de police plus grande */  
+    color: black; /* Couleur du texte */  
+    z-index: 1;  
+    padding: 10px; /* Ajout d'un peu de padding pour l'esthétique */  
+    left: 0; /* Aligner à gauche */  
+}  
+
+.dropdown-menu a {  
+    color: black; /* Assure que le texte des liens est noir */  
+    text-align: left; /* Aligne le texte à gauche */  
+    display: block; /* Chaque lien prend toute la largeur */  
+    padding: 5px 10px; /* Ajout de padding autour des liens */  
+    text-decoration: none; /* Supprime le soulignement des liens */  
+}  
+
+.dropdown-menu a:hover {  
+    background-color: #e9ecef; /* Change la couleur de fond au survol */  
+}  
+
+.card-body {  
+    position: relative; /* Nécessaire pour le dropdown */  
+}  
+    </style>
+</head>
+<body>
+    <section class="title-section">
+        <h3>Université d’État de médecine de bachkir</h3>
+    </section>
+    <div class="container">
+        <div class="points">
+            <div class="point"></div>
+            <div class="point"></div>
+            <div class="point"></div>
+        </div>
+        <img src=" bachkir.jpg" alt="Université d’État de médecine de bachkir ">
+        <div class="points">
+            <div class="point2"></div>
+            <div class="point2"></div>
+            <div class="point2"></div>
+        </div>
+    </div>
+    <br>
+    <section class="intro"> <p> L'Université d’État de médecine de Bachkir, fondée en <span class="numbers">1932</span>, est l'une des principales institutions médicales en Russie. Située à Ufa, elle est reconnue pour ses contributions dans les domaines de la médecine clinique, de la recherche biomédicale et de la formation de professionnels de la santé qualifiés. </p> <p> L'université compte <span class="numbers">6</span> facultés et plusieurs instituts de recherche spécialisés, couvrant des disciplines variées telles que la médecine générale, la pharmacie, et la santé publique. Elle accueille plus de <span class="numbers">5 000</span> étudiants, y compris de nombreux internationaux, et offre un environnement académique stimulant et axé sur l'innovation. </p> <p> En plus de ses programmes académiques, l'université propose des opportunités telles que des partenariats internationaux, des programmes de résidence clinique, et des bourses pour les étudiants talentueux. Classée parmi les <span class="numbers">500</span> meilleures universités médicales en Russie, elle est un choix prisé pour ceux qui recherchent une formation de qualité en médecine. </p> </section>
+    <section class="title-section">  
+        <h3>Spécialités et Formations</h3>  
+        <div class="specialties">  
+            <div class="row">  
+                <!-- Médecine générale -->  
+                <div class="col-md-3 col-sm-6 mb-4">  
+                    <div class="card">  
+                        <div class="card-body dropdown" onclick="toggleDropdown(event)">  
+                            <h5 class="card-title">  
+                                <span class="badge bg-secondary me-2">🏥</span>   
+                                Médecine Générale  
+                            </h5>  
+                            <div class="dropdown-menu">  
+                                <a class="dropdown-item" href="#">1.Médecine humaine</a>  
+                                <a class="dropdown-item" href="#">2.Médecine préventive</a>  
+                            </div>  
+                        </div>  
+                    </div>  
+                </div>  
+          
+                <!-- Médecine dentaire -->  
+                <div class="col-md-3 col-sm-6 mb-4">  
+                    <div class="card">  
+                        <div class="card-body dropdown" onclick="toggleDropdown(event)">  
+                            <h5 class="card-title">  
+                                <span class="badge bg-secondary me-2">🦷</span>   
+                                Médecine Dentaire  
+                            </h5>  
+                            <div class="dropdown-menu">  
+                                <a class="dropdown-item" href="#">1.Stomatologie</a>  
+                                <a class="dropdown-item" href="#">2.Chirurgie dentaire</a>  
+                            </div>  
+                        </div>  
+                    </div>  
+                </div>  
+          
+                <!-- Pharmacie -->  
+                <div class="col-md-3 col-sm-6 mb-4">  
+                    <div class="card">  
+                        <div class="card-body dropdown" onclick="toggleDropdown(event)">  
+                            <h5 class="card-title">  
+                                <span class="badge bg-secondary me-2">💊</span>  
+                                Pharmacie  
+                            </h5>  
+                            <div class="dropdown-menu">  
+                                <a class="dropdown-item" href="#">1.Pharmacologie</a>  
+                                <a class="dropdown-item" href="#">2.Médicament et toxicologie</a>  
+                            </div>  
+                        </div>    
+                    </div>  
+                </div>  
+          
+                <!-- Santé publique et médecine préventive -->  
+                <div class="col-md-3 col-sm-6 mb-4">  
+                    <div class="card">  
+                        <div class="card-body dropdown" onclick="toggleDropdown(event)">  
+                            <h5 class="card-title">  
+                                <span class="badge bg-secondary me-2">🌍</span>   
+                                Santé Publique et Médecine Préventive  
+                            </h5>  
+                            <div class="dropdown-menu">  
+                                <a class="dropdown-item" href="#">1.Santé publique</a>  
+                                <a class="dropdown-item" href="#">2.Prévention des maladies</a>  
+                            </div>  
+                        </div>    
+                    </div>  
+                </div>  
+          
+            </div>  
+        </div>  
+    </section>
+    <div class="footer-section">  
+        <div class="footer-content">  
+            <div class="footer-info">  
+                <h5><i class="fas fa-info-circle"></i> À Propos de Nous</h5>  
+                <hr>  
+                <p>Nous sommes spécialisés dans l'accompagnement des étudiants pour leurs démarches d'études en Pologne et en Russie.</p>  
+            </div>  
+            <div class="footer-links">  
+                <h5><i class="fas fa-link"></i> Liens Utiles</h5>  
+                <hr>  
+                <ul>  
+                    <li><a href="https://www.instagram.com/votreprofil" target="_blank">  Instagram <i class="fab fa-instagram"></i></a></li>  
+                    <li><a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>  
+                    <li><a href="propos.html">À Propos</a></li>  
+                </ul>  
+            </div>  
+            <div class="footer-contact">  
+                <h5><i class="fas fa-envelope"></i> Contact</h5>  
+                <hr>  
+                <p>Email: <a href="mailto:contact@votreorganisation.com">contact@votreorganisation.com</a></p>  
+                <p>Téléphone: <a href="tel:+123456789">+33 1 23 45 67 89</a></p>  
+            </div>  
+        </div>  
+        <div class="footer-bottom">  
+            <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>  
+        </div>  
+    </div>
+    <script>   document.getElementById('current-year').textContent = new Date().getFullYear();</script>  
+    <script>  
+        function toggleDropdown(event) {  
+            event.stopPropagation(); // Empêche la propagation de l'événement à la fenêtre  
+            const currentDropdownMenu = event.currentTarget.querySelector('.dropdown-menu');  
+        
+            // Fermer tous les autres menus déroulants  
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {  
+                if (menu !== currentDropdownMenu) {  
+                    menu.classList.remove('show');  
+                    menu.style.display = 'none'; // Réinitialiser le display  
+                }  
+            });  
+        
+            // Vérifier si le menu est déjà ouvert  
+            if (currentDropdownMenu.classList.contains('show')) {  
+                currentDropdownMenu.classList.remove('show');  
+                currentDropdownMenu.style.display = 'none'; // Masquer si déjà ouvert  
+            } else {  
+                currentDropdownMenu.classList.add('show');  
+                currentDropdownMenu.style.display = 'block'; // Afficher le menu  
+            }  
+        }  
+        
+        // Fermer le menu si on clique en dehors  
+        window.onclick = function(event) {  
+            const dropdowns = document.querySelectorAll('.dropdown-menu');  
+            dropdowns.forEach(menu => {  
+                menu.classList.remove('show');  
+                menu.style.display = 'none'; // Masquer tous les menus  
+            });  
+        }  
+        </script>
+</body>
+</html>
