@@ -1,5 +1,5 @@
 <?php
-// Connexion à la base de données
+ 
 $host = '127.0.0.1';
 $dbname = 'trusteducation';
 $username = 'root';
@@ -11,47 +11,35 @@ try {
 } catch(PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }
-
 $message = "";
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données du formulaire
+     
     $email = $_POST['email'] ?? '';
-    $motdepasse = $_POST['password'] ?? '';
+    $password = $_POST['password'] ?? '';
     $numero_de_telephone = $_POST['phone1'] ?? '';
     $prenom = $_POST['firstname'] ?? '';
     $nom = $_POST['lastname'] ?? '';
-    $date_naissance = $_POST['birthdate'] ?? '';
-    $nationalite = $_POST['nationalite'] ?? '';
- 
+    $date_naissance = $_POST['birthdate'] ?? '';     
 
-    // Vérifier que tous les champs obligatoires sont remplis
-    if (empty($email) || empty($motdepasse) || empty($numero_de_telephone) || empty($prenom) || empty($nom) || empty($date_naissance)) {
+    if (empty($email) || empty($password) || empty($numero_de_telephone) || empty($prenom) || empty($nom) || empty($date_naissance)) {
         $message = "Veuillez remplir tous les champs obligatoires.";
-    } else {
-        // Vérifier si l'utilisateur existe déjà
+    } else {         
         $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email");
         $stmt->execute([':email' => $email]);
         if ($stmt->fetch()) {
             $message = "Un compte avec cet email existe déjà.";
-        } else {
-            // Hacher le mot de passe
-            $hash = password_hash($motdepasse, PASSWORD_DEFAULT);
-
-            // Insérer dans la table utilisateur
-            $stmt = $conn->prepare("INSERT INTO utilisateur (email, numero_de_telephone, password, nationalite, date_naissance, sexe, nom, prenom) VALUES (:email, :numero_de_telephone, :password, :nationalite, :date_naissance, :sexe, :nom, :prenom)");
+        }  
+    
+        else{
+            $stmt = $conn->prepare("INSERT INTO utilisateur (email, numero_de_telephone, password,  date_naissance,  nom, prenom) VALUES (:email, :numero_de_telephone, :password,   :date_naissance,   :nom, :prenom)");
             $stmt->execute([
                 ':email' => $email,
                 ':numero_de_telephone' => $numero_de_telephone,
-                ':password' => $hash,
-                ':nationalite' => $nationalite,
+                ':password' => $password,
                 ':date_naissance' => $date_naissance,
-                ':sexe' => $sexe,
                 ':nom' => $nom,
                 ':prenom' => $prenom
             ]);
-
-            // Insérer dans la table assistantagence en liant par email
             $stmt2 = $conn->prepare("INSERT INTO assistantagence (email) VALUES (:email)");
             $stmt2->execute([':email' => $email]);
 
@@ -82,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 100%;
             max-width: 400px;
             padding: 20px;
-            margin-top: 20px;
+            margin-top:0px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -174,13 +162,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }  
 
     .footer-bottom {  
-        text-align: center; /* Centre le texte */  
-        margin-top: 20px; /* Espace au-dessus */  
+        text-align: center;  
+        margin-top: 20px;  
     }  
 
     hr {  
-        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
-        margin: 10px 0; /* Espacement autour de la ligne */  
+        border: 1px solid white; 
+        margin: 10px 0;   
     } 
     </style>
 </head>

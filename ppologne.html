@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Destinations : Pologne et Russie</title>  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400&family=Roboto:wght@400&display=swap" rel="stylesheet">  
     <style>  
         body {  
             background-color: #f8f9fa;  
-            font-family: 'Georgia', serif; /* Utilisation de la police serif */  
+            font-family: 'Georgia', serif;  
         }  
         .header {  
-            background-color: #003366; /* Bleu foncé */  
+            background-color: #003366; 
             color: #ffffff;  
             padding: 20px 0;  
             text-align: center;  
@@ -24,33 +25,33 @@
             background-color: #ffffff;  
             border-radius: 10px;  
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
-            border-left: 5px solid #003366; /* Bordure gauche colorée */  
+            border-left: 5px solid #003366;  
             transition: transform 0.3s;  
         }  
         .country-section:hover {  
-            transform: translateY(-5px); /* Animation d'élévation */  
+            transform: translateY(-5px);  
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  
         }  
         .country-image {  
-            height: 150px; /* Cadre d'image plus petit */  
+            height: 150px;    
             object-fit: cover;  
             border-radius: 10px;  
             transition: transform 0.3s;  
         }  
         .country-image:hover {  
-            transform: scale(1.05); /* Zoom léger sur survol */  
+            transform: scale(1.05);  
         }  
         h2 {  
             text-align: center;  
             margin-bottom: 15px;  
-            font-size: 1.8rem; /* Taille de titre augmentée */  
-            color: #003366; /* Texte en bleu foncé */  
+            font-size: 1.8rem;  
+            color: #003366;  
         }  
         h4 {  
-            color: #003366; /* Couleur bleu foncé pour les sous-titres */  
+            color: #003366;   
         }  
         p {  
-            font-size: 1rem; /* Taille de texte standard */  
+            font-size: 1rem;   
             line-height: 1.5;  
         }  
         ul {  
@@ -65,14 +66,14 @@
             margin-top: 15px;  
         }  
         .btn-explore:hover {  
-            background-color: #00509E; /* Couleur au survol */  
+            background-color: #00509E;  
         }  
         .footer-section {  
-            background-color: #003366; /* Couleur de fond du footer */  
+            background-color: #003366; /* Bleu foncé */  
             color: white; /* Texte blanc */  
             padding: 20px;  
-            width: 100%; 
-            font-family: Arial, Helvetica, sans-serif;/* S'assurer que le footer prend toute la largeur */  
+            width: 100%; /* S'assurer que le footer prend toute la largeur */  
+            font-family: Arial, sans-serif;
         }  
         .footer-content {  
             display: flex; /* Utilisation d'un flexbox pour le contenu */  
@@ -92,19 +93,19 @@
             padding: 0; /* Suppression du padding */  
         }  
         .footer-links a {  
-            color: white; /* Couleur des liens */  
-            text-decoration: none; /* Pas de soulignement */  
+            color: white;    
+            text-decoration: none;   
         }  
         .footer-links a:hover {  
-            text-decoration: underline; /* Soulignement lors du survol */  
+            text-decoration: underline;  
         }  
         .footer-bottom {  
-            text-align: center; /* Centre le texte */  
-            margin-top: 20px; /* Espace au-dessus */  
+            text-align: center;  
+            margin-top: 20px;  
         }  
         hr {  
-            border: 1px solid white; /* Couleur et épaisseur de la ligne */  
-            margin: 10px 0; /* Espacement autour de la ligne */  
+            border: 1px solid white;    
+            margin: 10px 0;    
         }  
     </style>  
 </head>  
@@ -115,18 +116,18 @@
     </div>  
 
     <div class="container">  
-        <!-- Section pour la Pologne -->  
+        
         <div class="country-section">  
             <h2>Pologne</h2>  
             <div class="row mb-3">  
                 <div class="col-md-4 text-center">  
-                    <img src="https://images.unsplash.com/photo-1580327906235-ab9b16277c52" alt="Paysage de la Pologne" class="country-image img-fluid">  
+                    <img src="Paysage de la Pologne.jpg" alt="Paysage de la Pologne" class="country-image img-fluid">  
                 </div>  
                 <div class="col-md-4 text-center">  
-                    <img src="https://images.unsplash.com/photo-1553252505-2f5f3f5e7c80" alt="Culture polonaise" class="country-image img-fluid">  
+                    <img src="Culture polonaise.jpg" alt="Culture polonaise" class="country-image img-fluid">  
                 </div>  
                 <div class="col-md-4 text-center">  
-                    <img src="https://images.unsplash.com/photo-1533087936227-92b5f6615c81" alt="Nature en Pologne" class="country-image img-fluid">  
+                    <img src="Nature en Pologne.jpg" alt="Nature en Pologne" class="country-image img-fluid">  
                 </div>  
             </div>  
             <p>  
@@ -149,40 +150,7 @@
             </ul>  
          </div>  
 
-        <!-- Section pour la Russie -->  
-        <div class="country-section">  
-            <h2>Russie</h2>  
-            <div class="row mb-3">  
-                <div class="col-md-4 text-center">  
-                    <img src="https://images.unsplash.com/photo-1495587640244-3a6119a7b2f6" alt="Ville de Moscou" class="country-image img-fluid">  
-                </div>  
-                <div class="col-md-4 text-center">  
-                    <img src="https://images.unsplash.com/photo-1575731259548-5d490d003fa1" alt="Saint-Pétersbourg" class="country-image img-fluid">  
-                </div>  
-                <div class="col-md-4 text-center">  
-                    <img src="https://images.unsplash.com/photo-1595194259303-e0f3fea364b3" alt="Nature en Russie" class="country-image img-fluid">  
-                </div>  
-            </div>  
-            <p>  
-                La Russie est connue pour ses universités de prestige, telles que l'Université d'État de Moscou, qui accueille de nombreux étudiants étrangers chaque année.   
-                Les programmes d'étude en russe et en anglais sont offerts, avec une multitude de disciplines allant des sciences humaines aux technologies avancées.   
-                La Russie offre également des frais de scolarité compétitifs, particulièrement pour les étudiants venant de certains pays.  
-            </p>  
-            <h4>Points forts pour les étudiants :</h4>  
-            <ul>  
-                <li>Programmes académiques de haut niveau avec possibilités de recherche.</li>  
-                <li>Richesse culturelle qui enrichit l'expérience éducative des étudiants.</li>  
-                <li>Coûts de la vie relativement bas par rapport à d'autres pays, en particulier en dehors des grandes villes.</li>  
-                <li>Large communauté internationale d'étudiants.</li>  
-            </ul>  
-            <h4>Avantages :</h4>  
-            <ul>  
-                <li>Possibilités de bourses d'études, notamment pour les programmes en russe.</li>  
-                <li>Accès à un vaste réseau d'anciens élèves et de contacts professionnels.</li>  
-                <li>Ambiance d'étude stimulante, favorisant le développement intellectuel et culturel.</li>  
-            </ul>  
-             
-        </div>  
+         
     </div>  
     <div class="footer-section">  
         <div class="footer-content">  

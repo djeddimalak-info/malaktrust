@@ -3,338 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>niversité forestière d’État de Saint-PétersbourgU </title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
+    <title>Université forestière d’État de Saint-Pétersbourg</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
     <style>
-        body {
-            font-family: serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .title-section {
-            text-align: center;
-            margin: 20px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        
-        .title-section h3 {
-            font-size: 1.8em;
-            color: #1c1c8c;
-            margin-bottom: 10px;
-        }
-        .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .points {
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            width: 200px;
-        }
-        .point {
+        .point, .point2 {
             height: 10px;
             width: 10px;
             border-radius: 50%;
+            display: inline-block;
+            margin: 2px;
         }
-        .point:first-child {
-            background-color: #bcd5fd;
-        }
-        .point:nth-child(2) {
-            background-color: #5c8bf0;
-        }
-        .point:last-child {
-            background-color: #5a81f7;
-        }
+        .point:nth-child(1) { background-color: #bcd5fd; }
+        .point:nth-child(2) { background-color: #5c8bf0; }
+        .point:nth-child(3) { background-color: #5a81f7; }
 
-        .point2 {
-            height: 10px;
-            width: 10px;
-            border-radius: 50%;
-        }
-        .point2:first-child {
-            background-color: #5a81f7;
-        }
-        .point2:nth-child(2) {
-            background-color: #5c8bf0;
-        }
-        .point2:last-child {
-            background-color: #bcd5fd;
-        }
-
-        .container img {
-            width: 270px;
-            height: 300px;
-            border: 5px solid #fafafc;
-            border-radius: 15px;
-            animation: slideDown 1.5s ease-in-out;
-            margin: 0 5%;
-        }
-        .intro {
-            background-color: #141454;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: 10px;
-            animation: fadeInUp 2s ease-in-out;
-        }
-        .intro p {
-            font-size: 1.2em;
-            margin: 20px 0;
-        }
-        .numbers {
-            color: #24e286;
-            font-weight: bold;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        @keyframes slideDown {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-        .specialties {  
-            width: 100%;  
-            padding: 20px;  
-            background-color: #ffffff;  
-            display: flex;  
-            flex-direction: column;  
-            align-items: center;  
+        .point2:nth-child(1) { background-color: #5a81f7; }
+        .point2:nth-child(2) { background-color: #5c8bf0; }
+        .point2:nth-child(3) { background-color: #bcd5fd; }
+         .footer-content {  
+            display: flex; /* Utilisation d'un flexbox pour le contenu */  
+            justify-content: space-between;  
+            flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+            padding: 20px 0;  
         }  
-        .specialties .row {  
-            display: flex;  
-            flex-wrap: wrap;  
-            justify-content: center; /* Centre horizontalement */  
+        .footer-info,  
+        .footer-links,  
+        .footer-contact {  
+            flex: 1; /* Équitablement répartir l'espace */  
+            min-width: 200px; /* Largeur minimale */  
+            margin: 10px; /* Espacement autour de chaque section */  
         }  
-        
-
-        .card {  
-            transition: transform 0.3s;  
-            cursor: pointer;  
-            background-color: #003366; /* Bleu foncé */  
-            border: none;  
-            border-radius: 5px;  
-            margin: 10px; /* Espace entre les cartes */  
-            padding: 15px; /* Padding pour les cartes */  
+        .footer-links ul {  
+            list-style-type: none; /* Suppression des puces */  
+            padding: 0; /* Suppression du padding */  
+        }  
+        .footer-links a {  
+            color: white; /* Couleur des liens */  
+            text-decoration: none; /* Pas de soulignement */  
+        }  
+        .footer-links a:hover {  
+            text-decoration: underline;  
+        }  
+        .footer-bottom {  
             text-align: center;  
-            
-            color: white; /* Texte en blanc */  
-            font-size: 0.9em; /* Taille du texte des cartes réduite */ 
-            font-family: Arial, sans-serif;
-            height: 30px;/* Largeur des cartes */  
-
+            margin-top: 20px;  
         }  
-        .card h5 {  
-            font-size: 1em; /* Taille du texte des titres */  
-            margin: 0; /* Enlève la marge par défaut */  
+        hr {  
+            border: 1px solid white;   
+            margin: 10px 0;  
         }  
-        .card:hover {  
-            transform: scale(1.05);  
-        }  
-
-        .footer-section {  
-        background-color: #003366; /* Bleu foncé */  
-        color: white; /* Texte blanc */  
-        padding: 20px;  
-        margin-top: 30px; /* Espace entre le contenu et le footer */  
-        font-family: Arial, sans-serif;
-    }  
-
-    .footer-content {  
-        display: flex; /* Utilisation d'un flexbox pour le contenu */  
-        justify-content: space-between;  
-        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
-        padding: 20px 0;  
-    }  
-
-    .footer-info,  
-    .footer-links,  
-    .footer-contact {  
-        flex: 1; /* Équitablement répartir l'espace */  
-        min-width: 200px; /* Largeur minimale */  
-        margin: 10px; /* Espacement autour de chaque section */  
-    }  
-
-    .footer-links ul {  
-        list-style-type: none; /* Suppression des puces */  
-        padding: 0; /* Suppression du padding */  
-    }  
-
-    .footer-links a {  
-        color: white; /* Couleur des liens */  
-        text-decoration: none; /* Pas de soulignement */  
-    }  
-
-    .footer-links a:hover {  
-        text-decoration: underline; /* Soulignement lors du survol */  
-    }  
-
-    .footer-bottom {  
-        text-align: center; /* Centre le texte */  
-        margin-top: 20px; /* Espace au-dessus */  
-    }  
-
-    hr {  
-        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
-        margin: 10px 0; /* Espacement autour de la ligne */  
-    } 
-    .dropdown-menu {  
-    display: none; /* Masquer le menu par défaut */  
-    position: absolute; /* Positionner par rapport à la carte */  
-    background-color: white;  
-    border-width: 1px; /* Épaisseur de la bordure */  
-    border-color: #010518; /* Couleur de la bordure */  
-    width: 300px; /* Largeur du menu */  
-    font-family: serif; /* Police sériée */  
-    font-size: large; /* Taille de police plus grande */  
-    color: black; /* Couleur du texte */  
-    z-index: 1;  
-    padding: 10px; /* Ajout d'un peu de padding pour l'esthétique */  
-    left: 0; /* Aligner à gauche */  
-}  
-
-.dropdown-menu a {  
-    color: black; /* Assure que le texte des liens est noir */  
-    text-align: left; /* Aligne le texte à gauche */  
-    display: block; /* Chaque lien prend toute la largeur */  
-    padding: 5px 10px; /* Ajout de padding autour des liens */  
-    text-decoration: none; /* Supprime le soulignement des liens */  
-}  
-
-.dropdown-menu a:hover {  
-    background-color: #e9ecef; /* Change la couleur de fond au survol */  
-}  
-
-.card-body {  
-    position: relative; /* Nécessaire pour le dropdown */  
-}  
-
     </style>
 </head>
 <body>
-    <section class="title-section">
-        <h3>Université forestière d’État de Saint-Pétersbourg  </h3>
+
+    <section class="bg-light text-center py-4">
+        <h3 class="fw-bold">Université forestière d’État de Saint-Pétersbourg</h3>
     </section>
-    <div class="container">
-        <div class="points">
-            <div class="point"></div>
-            <div class="point"></div>
-            <div class="point"></div>
+
+    <div class="container text-center my-4">
+        <div>
+            <span class="point"></span>
+            <span class="point"></span>
+            <span class="point"></span>
         </div>
-        <img src="foret.jpg" alt="Université forestière d’État de Saint-Pétersbourg  ">
-        <div class="points">
-            <div class="point2"></div>
-            <div class="point2"></div>
-            <div class="point2"></div>
+        <img src="foret.jpg" class="img-fluid my-3 rounded shadow" alt="Université forestière d’État de Saint-Pétersbourg">
+        <div>
+            <span class="point2"></span>
+            <span class="point2"></span>
+            <span class="point2"></span>
         </div>
     </div>
-    <br>
-    <section class="intro"> <p>L'Université forestière d'État de Saint-Pétersbourg, fondée en <span class="numbers">1803</span>, est l'une des plus anciennes institutions d'enseignement supérieur en Russie consacrées à l'étude des sciences forestières et de l'environnement. Située à Saint-Pétersbourg, elle est reconnue pour sa formation de spécialistes dans le domaine de la gestion forestière, de l'écologie et des ressources naturelles. </p> <p> L'université propose des programmes de doctorat, de maîtrise et de licence, couvrant diverses disciplines telles que la biométrie forestière, la sylviculture, la mécanique et l'ingénierie forestière. Elle accueille un grand nombre d'étudiants, tant russes qu'internationaux, attirés par ses programmes variés et son expertise reconnue. </p> <p> En plus de ses programmes académiques, l'université offre également un large éventail d'activités pratiques et de recherches appliquées, contribuant au développement durable et à la protection de l'environnement. L'institution collabore avec de nombreuses organisations, tant en Russie qu'à l'étranger, pour promouvoir la recherche forestière et l'innovation dans ce domaine. </p> </section>
 
-    <section class="title-section">  
-        <h3>Spécialités et Formations</h3>  
-        <div class="specialties">  
-            <div class="row">  
-                <!-- Sciences forestières -->  
-                <div class="col-md-3 col-sm-6 mb-4">  
-                    <div class="card">  
-                        <div class="card-body dropdown" onclick="toggleDropdown(event)">  
-                            <h5 class="card-title">  
-                                <span class="badge bg-secondary me-2">🌲</span>   
-                                Sciences forestières  
-                            </h5>  
-                            <div class="dropdown-menu">  
-                                <a class="dropdown-item" href="#">1.Gestion des ressources forestières</a>  
-                                <a class="dropdown-item" href="#">2.Silviculture</a>  
-                                <a class="dropdown-item" href="#">3.Protection des forêts</a>  
-                                <a class="dropdown-item" href="#">4.Écologie forestière</a>  
-                                <a class="dropdown-item" href="#">5.Génétique forestière</a>  
-                                <a class="dropdown-item" href="#">6.Aménagement forestier</a>  
-                                <a class="dropdown-item" href="#">7.Industrie du bois</a>  
-                                <a class="dropdown-item" href="#">8.Géomatique forestière</a>  
-                                <a class="dropdown-item" href="#">9.Droit forestier</a>   
-                                <a class="dropdown-item" href="#">10.Valeurs des écosystèmes forestiers</a>  
-                            </div>  
-                        </div>  
-                    </div>  
-                </div>  
-      
-                <!-- Ingénierie environnementale -->  
-                <div class="col-md-3 col-sm-6 mb-4">  
-                    <div class="card">  
-                        <div class="card-body dropdown" onclick="toggleDropdown(event)">  
-                            <h5 class="card-title">  
-                                <span class="badge bg-secondary me-2">🌍</span>   
-                                Ingénierie environnementale  
-                            </h5>  
-                            <div class="dropdown-menu">  
-                                <a class="dropdown-item" href="#">1.Gestion des ressources en eau</a>  
-                                <a class="dropdown-item" href="#">2.Développement durable</a>  
-                                <a class="dropdown-item" href="#">3.Énergie renouvelable</a>  
-                                <a class="dropdown-item" href="#">4.Préservation de la biodiversité</a>  
-                                <a class="dropdown-item" href="#">5.Aménagement du territoire</a>  
-                                <a class="dropdown-item" href="#">6.Audit environnemental</a>  
-                                <a class="dropdown-item" href="#">7.Évaluation environnementale</a>  
-                                <a class="dropdown-item" href="#">8.Gestion des déchets</a>  
-                                <a class="dropdown-item" href="#">9.Pollution de l'air et du sol</a>  
-                            </div>  
-                        </div>  
-                    </div>  
-                </div>  
-      
-                <!-- Autres spécialités -->  
-                <div class="col-md-3 col-sm-6 mb-4">  
-                    <div class="card">  
-                        <div class="card-body dropdown" onclick="toggleDropdown(event)">  
-                            <h5 class="card-title">  
-                                <span class="badge bg-secondary me-2">🌱</span>   
-                                Autres spécialités  
-                            </h5>  
-                            <div class="dropdown-menu">  
-                                <a class="dropdown-item" href="#">1.Agronomie</a>  
-                                <a class="dropdown-item" href="#">2.Biologie des systèmes</a>  
-                                <a class="dropdown-item" href="#">3.Sciences de la terre</a>  
-                                <a class="dropdown-item" href="#">4.Géographie</a>  
-                                <a class="dropdown-item" href="#">5.Sociologie rurale</a>  
-                                <a class="dropdown-item" href="#">6.Matériaux écologiques</a>  
-                            </div>  
-                        </div>    
-                    </div>  
-                </div>  
-      
-            </div>  
-        </div>  
+    <section class="container mb-5">
+        <p>L'Université forestière d'État de Saint-Pétersbourg, fondée en <span class="fw-bold">1803</span>, est l'une des plus anciennes institutions d'enseignement supérieur en Russie consacrées à l'étude des sciences forestières et de l'environnement.</p>
+        <p>Elle est reconnue pour sa formation de spécialistes dans le domaine de la gestion forestière, de l'écologie et des ressources naturelles.</p>
+        <p>Elle propose des programmes de doctorat, de maîtrise et de licence dans diverses disciplines, et accueille de nombreux étudiants internationaux.</p>
     </section>
-    <div class="footer-section">  
+
+    <section class="bg-light py-4">
+        <div class="container">
+            <h3 class="text-center mb-4">Spécialités et Formations</h3>
+            <div class="row g-4">
+
+                <!-- Carte 1 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-body" onclick="toggleDropdown(event)">
+                            <h5 class="card-title"><span class="badge bg-secondary me-2">🌲</span>Sciences forestières</h5>
+                            <div class="dropdown-menu p-2 border rounded">
+                                <a class="dropdown-item" href="#">1. Gestion des ressources forestières</a>
+                                <a class="dropdown-item" href="#">2. Silviculture</a>
+                                <a class="dropdown-item" href="#">3. Protection des forêts</a>
+                                <a class="dropdown-item" href="#">4. Écologie forestière</a>
+                                <a class="dropdown-item" href="#">5. Génétique forestière</a>
+                                <a class="dropdown-item" href="#">6. Aménagement forestier</a>
+                                <a class="dropdown-item" href="#">7. Industrie du bois</a>
+                                <a class="dropdown-item" href="#">8. Géomatique forestière</a>
+                                <a class="dropdown-item" href="#">9. Droit forestier</a>
+                                <a class="dropdown-item" href="#">10. Valeurs des écosystèmes forestiers</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 2 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-body" onclick="toggleDropdown(event)">
+                            <h5 class="card-title"><span class="badge bg-secondary me-2">🌍</span>Ingénierie environnementale</h5>
+                            <div class="dropdown-menu p-2 border rounded">
+                                <a class="dropdown-item" href="#">1. Gestion des ressources en eau</a>
+                                <a class="dropdown-item" href="#">2. Développement durable</a>
+                                <a class="dropdown-item" href="#">3. Énergie renouvelable</a>
+                                <a class="dropdown-item" href="#">4. Préservation de la biodiversité</a>
+                                <a class="dropdown-item" href="#">5. Aménagement du territoire</a>
+                                <a class="dropdown-item" href="#">6. Audit environnemental</a>
+                                <a class="dropdown-item" href="#">7. Évaluation environnementale</a>
+                                <a class="dropdown-item" href="#">8. Gestion des déchets</a>
+                                <a class="dropdown-item" href="#">9. Pollution de l'air et du sol</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 3 -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-body" onclick="toggleDropdown(event)">
+                            <h5 class="card-title"><span class="badge bg-secondary me-2">🌱</span>Autres spécialités</h5>
+                            <div class="dropdown-menu p-2 border rounded">
+                                <a class="dropdown-item" href="#">1. Agronomie</a>
+                                <a class="dropdown-item" href="#">2. Biologie des systèmes</a>
+                                <a class="dropdown-item" href="#">3. Sciences de la terre</a>
+                                <a class="dropdown-item" href="#">4. Géographie</a>
+                                <a class="dropdown-item" href="#">5. Sociologie rurale</a>
+                                <a class="dropdown-item" href="#">6. Matériaux écologiques</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+   <div class="footer-section">  
         <div class="footer-content">  
             <div class="footer-info">  
                 <h5><i class="fas fa-info-circle"></i> À Propos de Nous</h5>  
@@ -345,8 +162,8 @@
                 <h5><i class="fas fa-link"></i> Liens Utiles</h5>  
                 <hr>  
                 <ul>  
-                    <li><a href="https://www.instagram.com/votreprofil" target="_blank">  Instagram <i class="fab fa-instagram"></i></a></li>  
-                    <li><a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>  
+                    <li><a href="https://www.instagram.com/votreprofil" target="_blank">Instagram <i class="fab fa-instagram"></i></a></li>  
+                    <li><a href="https://wa.me/123456789" target="_blank">WhatsApp <i class="fab fa-whatsapp"></i></a></li>  
                     <li><a href="propos.html">À Propos</a></li>  
                 </ul>  
             </div>  
@@ -360,39 +177,42 @@
         <div class="footer-bottom">  
             <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>  
         </div>  
-    </div>
-    <script>   document.getElementById('current-year').textContent = new Date().getFullYear();</script> 
+    </div>  
+
     <script>  
-        function toggleDropdown(event) {  
-            event.stopPropagation(); // Empêche la propagation de l'événement à la fenêtre  
-            const currentDropdownMenu = event.currentTarget.querySelector('.dropdown-menu');  
-        
-            // Fermer tous les autres menus déroulants  
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {  
-                if (menu !== currentDropdownMenu) {  
-                    menu.classList.remove('show');  
-                    menu.style.display = 'none'; // Réinitialiser le display  
-                }  
-            });  
-        
-            // Vérifier si le menu est déjà ouvert  
-            if (currentDropdownMenu.classList.contains('show')) {  
-                currentDropdownMenu.classList.remove('show');  
-                currentDropdownMenu.style.display = 'none'; // Masquer si déjà ouvert  
-            } else {  
-                currentDropdownMenu.classList.add('show');  
-                currentDropdownMenu.style.display = 'block'; // Afficher le menu  
-            }  
-        }  
-        
-        // Fermer le menu si on clique en dehors  
-        window.onclick = function(event) {  
-            const dropdowns = document.querySelectorAll('.dropdown-menu');  
-            dropdowns.forEach(menu => {  
-                menu.classList.remove('show');  
-                menu.style.display = 'none'; // Masquer tous les menus  
-            });  
-        }  
-        </script>   
+        document.getElementById('current-year').textContent = new Date().getFullYear();  
+    </script>  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>  
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const current = event.currentTarget.querySelector('.dropdown-menu');
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu !== current) {
+                    menu.classList.remove('show');
+                    menu.style.display = 'none';
+                }
+            });
+            if (current.classList.contains('show')) {
+                current.classList.remove('show');
+                current.style.display = 'none';
+            } else {
+                current.classList.add('show');
+                current.style.display = 'block';
+            }
+        }
+
+        window.onclick = function () {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.classList.remove('show');
+                menu.style.display = 'none';
+            });
+        }
+    </script>
+
 </body>
 </html>

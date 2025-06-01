@@ -1,157 +1,25 @@
 <?php  
-// Connexion BDD  
+ 
 $host='127.0.0.1'; $dbname='trusteducation'; $user='root'; $pass='';  
 try { $pdo=new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",$user,$pass); }  
 catch (PDOException $e) { die("Erreur : ". $e->getMessage()); }  
 
-// Vérifier si les paramètres sont passés  
+
 if (isset($_GET['idd']) && isset($_GET['email'])) {  
     $idd = trim($_GET['idd']);  
     $email = trim($_GET['email']);  
-    // Afficher le nombre de lignes pour cet IDD et cet email
-    /*
-    $stmtCount = $pdo->prepare("SELECT COUNT(*) FROM demande WHERE IDD=:idd AND email=:email");
-    $stmtCount->execute([':idd'=>$idd, ':email'=>$email]);
-    $count = $stmtCount->fetchColumn();
-    echo '<div style="background:#eef;border:1px solid #00c;padding:10px;margin:10px 0;">Nombre de lignes trouvées : '.(int)$count.'</div>';
-    */
-    // Récupérer la demande  
+    
+  
     $stmt = $pdo->prepare("SELECT * FROM demande WHERE IDD=:idd AND email=:email");  
     $stmt->execute([':idd'=>$idd, ':email'=>$email]);  
     $demande = $stmt->fetch(PDO::FETCH_ASSOC);  
-    /*
-    echo '<pre style="background:#eee;border:1px solid #ccc;padding:10px;">';
-    var_dump($demande);
-    echo '</pre>';
-    if (!$demande) {
-      echo '<div style="background:#fee;border:1px solid #c00;padding:10px;margin:10px 0;">Aucune ligne trouvée pour IDD = '.htmlspecialchars($idd).' et email = '.htmlspecialchars($email).'</div>';
-    }
-    // Debug : afficher toutes les demandes pour comparer
-    $all = $pdo->query("SELECT IDD, email FROM demande")->fetchAll(PDO::FETCH_ASSOC);
-    echo '<div style="background:#f8f8ff;border:1px solid #888;padding:10px;margin:10px 0;">';
-    echo '<b>Liste des demandes (IDD, email) :</b><ul>';
-    foreach($all as $row) {
-      echo '<li>IDD = '.htmlspecialchars($row['IDD']).' | email = '.htmlspecialchars($row['email']).'</li>';
-    }
-    echo '</ul></div>';
-    */
+     
 } else {  
     $demande = null;  
 }  
 
-// Traitement de la suppression
-if (isset($_POST['action']) && $_POST['action'] === 'supprimer' && isset($_POST['idd']) && isset($_POST['email'])) {
-    $idd = trim($_POST['idd']);
-    $email = trim($_POST['email']);
-    $stmt = $pdo->prepare("DELETE FROM demande WHERE IDD = :idd AND email = :email");
-    $stmt->execute([':idd' => $idd, ':email' => $email]);
-    $message = ($stmt->rowCount() > 0)
-        ? '<div class="delete-success-bg"><div class="delete-success-card">
-                <div class="delete-success-icon"><i class="fas fa-check-circle"></i></div>
-                <h2 class="delete-success-title">Suppression réussie</h2>
-                <p class="delete-success-text">Votre demande a été <span>supprimée avec succès</span>.</p>
-                <p class="delete-success-subtext">Merci de votre confiance.<br>Vous pouvez effectuer une nouvelle demande à tout moment.</p>
-                <a href="pageaccueil.html" class="delete-success-btn"><i class="fas fa-home"></i> Retour à l\'accueil</a>
-            </div></div>'
-        : '<div class="delete-success-bg"><div class="delete-success-card">
-                <div class="delete-error-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                <h2 class="delete-error-title">Erreur de suppression</h2>
-                <p class="delete-success-text">La demande n\'a pas pu être supprimée.<br><span>Elle a peut-être déjà été supprimée ou n\'existe pas.</span></p>
-                <a href="pageaccueil.html" class="delete-success-btn"><i class="fas fa-home"></i> Retour à l\'accueil</a>
-            </div></div>';
-    echo '<style>
-    .delete-success-bg {
-        min-height: 100vh;
-        width: 100vw;
-        background: linear-gradient(120deg, #f5f7fa 0%, #c3cfe2 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
-        margin: 0;
-    }
-    .delete-success-card {
-        background: #fff;
-        border-radius: 24px;
-        box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13);
-        padding: 48px 36px 36px 36px;
-        max-width: 400px;
-        width: 95vw;
-        text-align: center;
-        position: relative;
-        animation: fadeInUp 0.7s cubic-bezier(.39,.575,.56,1.000);
-    }
-    .delete-success-icon {
-        color: #27ae60;
-        font-size: 3.5em;
-        margin-bottom: 18px;
-        animation: pop 0.7s;
-    }
-    .delete-error-icon {
-        color: #e74c3c;
-        font-size: 3.5em;
-        margin-bottom: 18px;
-        animation: pop 0.7s;
-    }
-    .delete-success-title {
-        color: #222;
-        font-size: 2em;
-        font-weight: 800;
-        margin-bottom: 10px;
-        letter-spacing: 1px;
-    }
-    .delete-error-title {
-        color: #e74c3c;
-        font-size: 2em;
-        font-weight: 800;
-        margin-bottom: 10px;
-        letter-spacing: 1px;
-    }
-    .delete-success-text {
-        font-size: 1.15em;
-        color: #222;
-        margin-bottom: 10px;
-    }
-    .delete-success-text span {
-        color: #27ae60;
-        font-weight: 600;
-    }
-    .delete-success-subtext {
-        color: #888;
-        font-size: 1em;
-        margin-bottom: 24px;
-    }
-    .delete-success-btn {
-        display: inline-block;
-        background: linear-gradient(90deg, #001f3f 60%, #0074d9 100%);
-        color: #fff;
-        font-weight: 700;
-        border: none;
-        border-radius: 8px;
-        padding: 12px 36px;
-        font-size: 1.1em;
-        text-decoration: none;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-        transition: background 0.2s, box-shadow 0.2s;
-    }
-    .delete-success-btn:hover {
-        background: linear-gradient(90deg, #0074d9 60%, #001f3f 100%);
-        color: #fff;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-    }
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(40px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pop {
-        0% { transform: scale(0.7); }
-        60% { transform: scale(1.15); }
-        100% { transform: scale(1); }
-    }
-    </style>';
-    echo $message;
-    exit;
-}
+ 
+ 
 ?>  
 <!DOCTYPE html>  
 <html lang="fr">  
@@ -276,7 +144,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'supprimer' && isset($_POST[
         <?php foreach ($demande as $key => $value): ?>
           <li class="list-group-item d-flex align-items-center">
             <?php
-              // Icônes selon le champ
+              
               $icons = [
                 'IDD' => 'fa-hashtag',
                 'email' => 'fa-envelope',
@@ -300,8 +168,8 @@ if (isset($_POST['action']) && $_POST['action'] === 'supprimer' && isset($_POST[
     <form method="post" class="text-center mt-4">
       <input type="hidden" name="idd" value="<?php echo htmlspecialchars($demande['IDD']); ?>">
       <input type="hidden" name="email" value="<?php echo htmlspecialchars($demande['email']); ?>">
-       <button type="submit" name="action" value="supprimer" class="btn btn-danger mr-2 mb-2"><i class="fas fa-trash-alt"></i> SUPPRIMER</button>
-      <button type="button" class="btn btn-success mb-2" onclick="window.location.href='créerdemande.php';"><i class="fas fa-check"></i> CONFIRMER</button>
+ 
+     
       <a href="pageaccueil.html" class="btn btn-darkblue mb-2"><i class="fas fa-home"></i> Retour à l'accueil</a>
     </form>
     <?php else: ?>

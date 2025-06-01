@@ -1,5 +1,5 @@
 <?php
-// Connexion à la base de données
+ 
 $host = '127.0.0.1';
 $dbname = 'trusteducation';
 $username = 'root';
@@ -15,14 +15,14 @@ try {
 $message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données du formulaire
+ 
     $idd = $_POST['idd'] ?? '';
     $email = $_POST['email'] ?? '';
     $user_password = $_POST['password'] ?? '';
     $objet = $_POST['objet'] ?? '';
     $msg = $_POST['message'] ?? '';
 
-    // Champs dynamiques
+  
     $universites = [];
     $specialites = [];
     $niveaux = [];
@@ -34,17 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $i++;
     }
 
-    // Vérifier que tous les champs obligatoires sont remplis
+     
     if (empty($idd) || empty($email) || empty($user_password) || empty($objet) || empty($msg) || empty($universites)) {
         $message = "Veuillez remplir tous les champs obligatoires.";
     } else {
-        // Vérifier si l'utilisateur existe
+    
         $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch();
 
         if ($user) {
-            // Vérification du mot de passe (hash ou clair)
+            
             $dbPassword = $user['password'];
             if ((strlen($dbPassword) > 30 && strpos($dbPassword, '$2y$') === 0) || strpos($dbPassword, '$argon2') === 0) {
                 $isValid = password_verify($user_password, $dbPassword);
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($iddExists) {
                     $message = "Cet identifiant de demande existe déjà. Veuillez en choisir un autre.";
                 } else {
-                    // Insertion de chaque ligne dynamique dans la table demande avec date_creation automatique
+                     
                     $stmt2 = $conn->prepare("INSERT INTO demande (IDD, email, Objet, Message, universite, specialite, niveau, date_creation) VALUES (:idd, :email, :objet, :message, :universite, :specialite, :niveau, NOW())");
                     foreach ($universites as $index => $universite) {
                         $stmt2->execute([
@@ -209,42 +209,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }  
 
     .footer-content {  
-        display: flex; /* Utilisation d'un flexbox pour le contenu */  
+        display: flex;   
         justify-content: space-between;  
-        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+        flex-wrap: wrap;  
         padding: 20px 0;  
     }  
 
     .footer-info,  
     .footer-links,  
     .footer-contact {  
-        flex: 1; /* Équitablement répartir l'espace */  
-        min-width: 200px; /* Largeur minimale */  
-        margin: 10px; /* Espacement autour de chaque section */  
+        flex: 1;  
+        min-width: 200px; 
+        margin: 10px;  
     }  
 
     .footer-links ul {  
-        list-style-type: none; /* Suppression des puces */  
-        padding: 0; /* Suppression du padding */  
+        list-style-type: none;    
+        padding: 0;     
     }  
 
     .footer-links a {  
-        color: white; /* Couleur des liens */  
-        text-decoration: none; /* Pas de soulignement */  
+        color: white;   
+        text-decoration: none;    
     }  
 
     .footer-links a:hover {  
-        text-decoration: underline; /* Soulignement lors du survol */  
+        text-decoration: underline;   
     }  
 
     .footer-bottom {  
-        text-align: center; /* Centre le texte */  
-        margin-top: 20px; /* Espace au-dessus */  
+        text-align: center;   
+        margin-top: 20px;    
     }  
 
     hr {  
-        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
-        margin: 10px 0; /* Espacement autour de la ligne */  
+        border: 1px solid white; 
+        margin: 10px 0;  
     } 
         .navbar {
             background-color: #f8f9fa;
@@ -324,7 +324,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </style>  
 </head>  
 <body>
-<!-- BARRE DE NAVIGATION EXACTE DE pageaccueil.html -->
+ 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
         <a class="navbar-brand" href="#">

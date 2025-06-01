@@ -1,5 +1,5 @@
 <?php
-// Connexion à la base de données
+ 
 $host = '127.0.0.1';
 $dbname = 'trusteducation';
 $username = 'root';
@@ -15,7 +15,7 @@ try {
 $message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données du formulaire
+    
     $email = $_POST['email'] ?? '';
     $motdepasse = $_POST['password'] ?? '';
     $numero_de_telephone = $_POST['phone1'] ?? '';
@@ -25,20 +25,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
   
 
-    // Vérifier que tous les champs obligatoires sont remplis
+    
     if (empty($email) || empty($motdepasse) || empty($numero_de_telephone) || empty($prenom) || empty($nom) || empty($date_naissance)) {
         $message = "Veuillez remplir tous les champs obligatoires.";
     } else {
-        // Vérifier si l'utilisateur existe déjà
+         
         $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email");
         $stmt->execute([':email' => $email]);
         if ($stmt->fetch()) {
             $message = "Un compte avec cet email existe déjà.";
         } else {
-            // Hacher le mot de passe
+            
             $hash = password_hash($motdepasse, PASSWORD_DEFAULT);
 
-            // Insérer dans la table utilisateur
+            
             $stmt = $conn->prepare("INSERT INTO utilisateur (email, numero_de_telephone, password,   date_naissance,  nom, prenom) VALUES (:email, :numero_de_telephone, :password,  :date_naissance,   :nom, :prenom)");
             $stmt->execute([
                 ':email' => $email,
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':prenom' => $prenom
             ]);
 
-            // Insérer dans la table assistantagence en liant par email
+            
             $stmt2 = $conn->prepare("INSERT INTO etudiant (email) VALUES (:email)");
             $stmt2->execute([':email' => $email]);
 
@@ -134,51 +134,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transform: scale(1.05);
         }
         .footer-section {  
-        background-color: #003366; /* Bleu foncé */  
-        color: white; /* Texte blanc */  
+        background-color: #003366;   
+        color: white;  
         padding: 20px;  
         margin-top: 30px;
-        font-family: Arial, Helvetica, sans-serif; /* Espace entre le contenu et le footer */  
+        font-family: Arial, Helvetica, sans-serif;  
     }  
 
     .footer-content {  
-        display: flex; /* Utilisation d'un flexbox pour le contenu */  
+        display: flex;  
         justify-content: space-between;  
-        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+        flex-wrap: wrap;   
         padding: 20px 0;  
     }  
 
     .footer-info,  
     .footer-links,  
     .footer-contact {  
-        flex: 1; /* Équitablement répartir l'espace */  
-        min-width: 200px; /* Largeur minimale */  
-        margin: 10px; /* Espacement autour de chaque section */  
+        flex: 1;    
+        min-width: 200px;
+        margin: 10px;  
     }  
 
     .footer-links ul {  
-        list-style-type: none; /* Suppression des puces */  
-        padding: 0; /* Suppression du padding */  
+        list-style-type: none;   
+        padding: 0;   
     }  
 
     .footer-links a {  
-        color: white; /* Couleur des liens */  
+        color: white;   
         text-decoration: none; /* Pas de soulignement */  
     }  
 
     .footer-links a:hover {  
-        text-decoration: underline; /* Soulignement lors du survol */  
+        text-decoration: underline;   
     }  
 
     .footer-bottom {  
-        text-align: center; /* Centre le texte */  
-        margin-top: 20px; /* Espace au-dessus */  
+        text-align: center;    
+        margin-top: 20px;   
     }  
 
     hr {  
-        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
-        margin: 10px 0; /* Espacement autour de la ligne */  
-    } 
+        border: 1px solid white; 
+        margin: 10px 0;     } 
     </style>
 </head>
 <body>
@@ -214,7 +213,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <i class="fas fa-phone"></i>
         <input type="tel" name="phone1" placeholder="       Numéro de téléphone" required>
     </div>
-    <!-- Ajoute nationalite et sexe si tu veux -->
+     
     <button type="submit">Créer le compte</button>
 </form>
   

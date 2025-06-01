@@ -23,7 +23,7 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    // Suppression de la demande dans la table 'demande'
+    // Suppression 
     $stmt = $conn->prepare("DELETE FROM demande WHERE IDD = ?");
     $stmt->execute([$idd]);
     

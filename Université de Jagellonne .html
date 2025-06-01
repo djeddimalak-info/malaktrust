@@ -4,6 +4,9 @@
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Université de Jagellonne</title>  
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <style>  
         body {  
             font-family: serif;  
@@ -152,44 +155,46 @@
         margin-top: 30px; /* Espace entre le contenu et le footer */  
     }  
 
-    .footer-content {  
-        display: flex; /* Utilisation d'un flexbox pour le contenu */  
-        justify-content: space-between;  
-        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
-        padding: 20px 0;  
-    }  
-
-    .footer-info,  
-    .footer-links,  
-    .footer-contact {  
-        flex: 1; /* Équitablement répartir l'espace */  
-        min-width: 200px; /* Largeur minimale */  
-        margin: 10px; /* Espacement autour de chaque section */  
-    }  
-
-    .footer-links ul {  
-        list-style-type: none; /* Suppression des puces */  
-        padding: 0; /* Suppression du padding */  
-    }  
-
-    .footer-links a {  
-        color: white; /* Couleur des liens */  
-        text-decoration: none; /* Pas de soulignement */  
-    }  
-
-    .footer-links a:hover {  
-        text-decoration: underline; /* Soulignement lors du survol */  
-    }  
-
-    .footer-bottom {  
-        text-align: center; /* Centre le texte */  
-        margin-top: 20px; /* Espace au-dessus */  
-    }  
-
-    hr {  
-        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
-        margin: 10px 0; /* Espacement autour de la ligne */  
-    } 
+    
+         .footer-section {  
+            background-color: #003366; /* Bleu foncé */  
+            color: white; /* Texte blanc */  
+            padding: 20px;  
+            width: 100%; /* S'assurer que le footer prend toute la largeur */  
+            font-family: Arial, sans-serif;
+        }  
+        .footer-content {  
+            display: flex; /* Utilisation d'un flexbox pour le contenu */  
+            justify-content: space-between;  
+            flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+            padding: 20px 0;  
+        }  
+        .footer-info,  
+        .footer-links,  
+        .footer-contact {  
+            flex: 1; /* Équitablement répartir l'espace */  
+            min-width: 200px; /* Largeur minimale */  
+            margin: 10px; /* Espacement autour de chaque section */  
+        }  
+        .footer-links ul {  
+            list-style-type: none; /* Suppression des puces */  
+            padding: 0; /* Suppression du padding */  
+        }  
+        .footer-links a {  
+            color: white; /* Couleur des liens */  
+            text-decoration: none; /* Pas de soulignement */  
+        }  
+        .footer-links a:hover {  
+            text-decoration: underline;  
+        }  
+        .footer-bottom {  
+            text-align: center;  
+            margin-top: 20px;  
+        }  
+        hr {  
+            border: 1px solid white;   
+            margin: 10px 0;  
+        }  
     .dropdown-menu {  
     display: none; /* Masquer le menu par défaut */  
     position: absolute; /* Positionner par rapport à la carte */  
@@ -322,33 +327,38 @@
         </div>  
     </section>
    
-<div class="footer-section">  
-    <div class="footer-content">  
-        <div class="footer-info">  
-            <h5><i class="fas fa-info-circle"></i> À Propos de Nous</h5>  
-            <hr>  
-            <p>Nous sommes spécialisés dans l'accompagnement des étudiants pour leurs démarches d'études en Pologne et en Russie.</p>  
+  <div class="footer-section">  
+        <div class="footer-content">  
+            <div class="footer-info">  
+                <h5><span class="fa fa-info-circle"></span> À Propos de Nous</h5>  
+                <hr>  
+                <p>Nous sommes spécialisés dans l'accompagnement des étudiants pour leurs démarches d'études en Pologne et en Russie.</p>  
+            </div>  
+            <div class="footer-links">  
+                <h5><span class="fa fa-link"></span> Liens Utiles</h5>  
+                <hr>  
+                <ul>  
+                    <li><a href="https://www.instagram.com/votreprofil" target="_blank">Instagram <span class="fa fa-instagram"></span></a></li>  
+                    <li><a href="https://wa.me/123456789" target="_blank">WhatsApp <span class="fa fa-whatsapp"></span></a></li>  
+                    <li><a href="propos.html">À Propos</a></li>  
+                </ul>  
+            </div>  
+            <div class="footer-contact">  
+                <h5><span class="fa fa-envelope"></span> Contact</h5>  
+                <hr>  
+                <p>Email: <a href="mailto:contact@votreorganisation.com">contact@votreorganisation.com</a></p>  
+                <p>Téléphone: <a href="tel:+123456789">+33 1 23 45 67 89</a></p>  
+            </div>  
         </div>  
-        <div class="footer-links">  
-            <h5><i class="fas fa-link"></i> Liens Utiles</h5>  
-            <hr>  
-            <ul>  
-                <li><a href="https://www.instagram.com/votreprofil" target="_blank">  Instagram <i class="fab fa-instagram"></i></a></li>  
-                <li><a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>  
-                <li><a href="propos.html">À Propos</a></li>  
-            </ul>  
-        </div>  
-        <div class="footer-contact">  
-            <h5><i class="fas fa-envelope"></i> Contact</h5>  
-            <hr>  
-            <p>Email: <a href="mailto:contact@votreorganisation.com">contact@votreorganisation.com</a></p>  
-            <p>Téléphone: <a href="tel:+123456789">+33 1 23 45 67 89</a></p>  
+        <div class="footer-bottom">  
+            <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>  
         </div>  
     </div>  
-    <div class="footer-bottom">  
-        <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>  
-    </div>  
-</div>
+
+    <script>  
+        document.getElementById('current-year').textContent = new Date().getFullYear();  
+    </script>  
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>  

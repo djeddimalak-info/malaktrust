@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-session_start(); // Mets cette ligne SANS espace devant, juste après <?php
+session_start();  
 
 if (!isset($_SESSION['email'])) {
     header('Location: login.php');
@@ -17,12 +17,11 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Récupérer toutes les demandes de traduction avec leurs fichiers et la date
+    // Réc fichiers et la date
     $stmt = $conn->query("SELECT d.IDT, d.email, d.date_creation, f.IDF, f.nom_fichier, f.langue, f.type_fichier FROM demandetraduction d LEFT JOIN fichiertraduction f ON d.IDT = f.IDT ORDER BY d.IDT DESC");
     $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Organisation des fichiers par demande
-    $grouped = [];
+        $grouped = [];
     foreach ($demandes as $row) {
         $idt = $row['IDT'];
         if (!isset($grouped[$idt])) {
@@ -41,7 +40,7 @@ try {
             ];
         }
     }
-    // Dictionnaire code langue => nom complet
+     
     $langueLabels = [
         'fr' => 'Français',
         'en' => 'Anglais',
@@ -51,10 +50,10 @@ try {
         'ru' => 'Russe'
     ];
 
-    // Suppression automatique des demandes sans fichier associé
+    // Supp auto des demandes sans fichie 
     foreach ($grouped as $idt => $demande) {
         if (empty($demande['fichiers'])) {
-            // Supprimer la demande de la base
+            // Supp  demande  
             $stmtDel = $conn->prepare("DELETE FROM demandetraduction WHERE IDT = ?");
             $stmtDel->execute([$idt]);
             unset($grouped[$idt]);
@@ -64,15 +63,15 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
-// Suppression d'un fichier de traduction
+// Supp fichier trad
 if (isset($_POST['delete_file'], $_POST['IDT'], $_POST['IDF'])) {
     $idt = $_POST['IDT'];
     $idf = $_POST['IDF'];
-    // Supprimer le fichier de la base
+    // Supp fichier 
     $stmtDel = $conn->prepare("DELETE FROM fichiertraduction WHERE IDT = ? AND IDF = ?");
     $stmtDel->execute([$idt, $idf]);
-    // Optionnel : supprimer le fichier physique du dossier uploads si besoin
-    // Rechargement de la page pour voir la mise à jour
+    // Opt supprimer le fichier physique du dossier uploads si besoin
+    
     header("Location: DashboardTraduction.php");
     exit;
 }
@@ -152,7 +151,7 @@ h3 {
 .action-btn:hover {
     background: #3949ab;
 }
-/* Barre de navigation */
+ 
 .custom-navbar {
     width: 100%;
     background: #1a237e;
@@ -164,22 +163,22 @@ h3 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Nom de l'agence (Trust Education) */
+ 
 .navbar-title {
     color: #fff;
-    font-size: 1.2em;  /* Plus petit */
+    font-size: 1.2em;   
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
-/* Conteneur à droite (icône + bouton) */
+ 
 .navbar-right {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-/* Info utilisateur (icône + nom) */
+
 .user-info {
     display: flex;
     align-items: center;
@@ -206,7 +205,7 @@ h3 {
     border: none;
     border-radius: 6px;
     text-decoration: none;
-    margin-right: 70px; /* Décalé un peu à droite */
+    margin-right: 70px;  
     transition: background 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px rgba(67, 160, 71, 0.1);
 }
@@ -275,7 +274,7 @@ h3 {
                     <td><?= htmlspecialchars($fichier['type_fichier']) ?></td>
                     <td>
                         <a href="uploads/<?= urlencode($fichier['nom_fichier']) ?>" target="_blank">Télécharger</a>
-                        <!-- Bouton Supprimer -->
+                        
                         <form method="post" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer ce fichier ?');">
                             <input type="hidden" name="delete_file" value="1">
                             <input type="hidden" name="IDT" value="<?= htmlspecialchars($idt) ?>">

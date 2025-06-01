@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-session_start(); // Mets cette ligne SANS espace devant, juste après <?php
+session_start(); 
 
 if (!isset($_SESSION['email'])) {
     header('Location: login.php');
@@ -96,8 +96,7 @@ h2 {
 }
 .action-btn:hover {
     background: #3949ab;
-}
-/* Barre de navigation */
+} 
 .custom-navbar {
     width: 100%;
     background: #1a237e;
@@ -109,22 +108,21 @@ h2 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Nom de l'agence (Trust Education) */
+ 
 .navbar-title {
     color: #fff;
-    font-size: 1.2em;  /* Plus petit */
+    font-size: 1.2em;   
     font-weight: 600;
     letter-spacing: 0.5px;
 }
-
-/* Conteneur à droite (icône + bouton) */
+ 
 .navbar-right {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-/* Info utilisateur (icône + nom) */
+ 
 .user-info {
     display: flex;
     align-items: center;
@@ -133,7 +131,7 @@ h2 {
     font-size: 0.95em;
 }
 
-/* Icône utilisateur */
+ 
 .user-icon {
     width: 28px;
     height: 28px;
@@ -152,7 +150,7 @@ h2 {
     border: none;
     border-radius: 6px;
     text-decoration: none;
-    margin-right: 70px; /* Décalé un peu à droite */
+    margin-right: 70px;  
     transition: background 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px rgba(67, 160, 71, 0.1);
 }

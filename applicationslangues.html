@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Applications de Langues</title>  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Ajout de Font Awesome -->  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
     <style>  
         body {  
             background-color: #f8f9fa;  
@@ -14,10 +14,10 @@
 
         h2 {  
             text-align: center;  
-            margin-top: 20px;  
+            margin-top:0px;  
             font-family: 'Arial', sans-serif;  
             color: #002244;  
-            margin-bottom: 80px; /* Espace pour la barre de navigation */  
+            margin-bottom: 80px;    
         }  
 
         .app-card {  
@@ -29,14 +29,14 @@
             padding: 20px;  
             display: flex;  
             align-items: center;  
-            text-decoration: none; /* Supprimer le soulignement des liens */  
-            color: inherit; /* Couleur du texte héritée */  
+            text-decoration: none;   
+            color: inherit; 
         }  
 
         .app-icon {  
-            font-size: 50px; /* Taille de l'icône Font Awesome */  
-            margin-right: 15px; /* Espace entre l'icône et le texte */  
-            color: #003366; /* Couleur des icônes */  
+            font-size: 50px;  
+            margin-right: 15px;  
+            color: #003366;   
         }  
 
         .app-card:hover {  
@@ -57,52 +57,52 @@
             transform: translateY(0);  
         }  
         .footer-section {  
-        background-color: #003366; /* Bleu foncé */  
-        color: white; /* Texte blanc */  
+        background-color: #003366;  
+        color: white;    
         padding: 20px;  
-        margin-top: 30px; /* Espace entre le contenu et le footer */  
+        margin-top: 30px;   
     }  
 
     .footer-content {  
-        display: flex; /* Utilisation d'un flexbox pour le contenu */  
+        display: flex;  
         justify-content: space-between;  
-        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+        flex-wrap: wrap;   
         padding: 20px 0;  
     }  
 
     .footer-info,  
     .footer-links,  
     .footer-contact {  
-        flex: 1; /* Équitablement répartir l'espace */  
-        min-width: 200px; /* Largeur minimale */  
-        margin: 10px; /* Espacement autour de chaque section */  
+        flex: 1; 
+        min-width: 200px;  
+        margin: 10px;  
     }  
 
     .footer-links ul {  
-        list-style-type: none; /* Suppression des puces */  
-        padding: 0; /* Suppression du padding */  
+        list-style-type: none;   
+        padding: 0;   
     }  
 
     .footer-links a {  
-        color: white; /* Couleur des liens */  
-        text-decoration: none; /* Pas de soulignement */  
+        color: white;  
+        text-decoration: none;  
     }  
 
     .footer-links a:hover {  
-        text-decoration: underline; /* Soulignement lors du survol */  
+        text-decoration: underline;  
     }  
 
     .footer-bottom {  
-        text-align: center; /* Centre le texte */  
-        margin-top: 20px; /* Espace au-dessus */  
+        text-align: center;   
+        margin-top: 20px;  
     }  
 
     hr {  
-        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
-        margin: 10px 0; /* Espacement autour de la ligne */  
+        border: 1px solid white;    
+        margin: 10px 0;   
     }
 
-    /* Barre de navigation TrustEducation (pleine largeur, adaptée pour sous-dossier css/) */
+     
     .navbar {
       width: 100vw;
       min-width: 100vw;
@@ -120,7 +120,7 @@
       letter-spacing: 0.08em;
     }
 
-    /* Style pour décaler le contenu sous la navbar */
+     
     body {
       padding-top: 110px !important;
     }
@@ -134,7 +134,7 @@
 </head>  
 <body>  
  
-<div style="padding-top:120px;"></div>
+<div style="padding-top:0px;"></div>
 
     <div class="container" style="margin-top: 0;">  
         <h2>Découvrez Les  Applications de Langues</h2>  
@@ -227,13 +227,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>  
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
     <script>  
-        // Fade-in animation  
+        
         window.addEventListener('load', function() {  
             const animatedElements = document.querySelectorAll('.fade-in');  
             animatedElements.forEach((el, index) => {  
                 setTimeout(() => {  
                     el.classList.add('show');  
-                }, index * 300); // Delay for each element  
+                }, index * 300);   
             });  
         });  
     </script>  

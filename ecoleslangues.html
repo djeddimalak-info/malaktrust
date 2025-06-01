@@ -6,7 +6,6 @@
     <title>Écoles de Langues en Algérie</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
 html, body {
     height: 100%;
@@ -19,8 +18,7 @@ body {
     display: flex;
     flex-direction: column;
 }
- 
- .main-center {
+.main-center {
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
@@ -30,7 +28,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    min-height: 0; /* Ajouté */
+    min-height: 0;
 }
 h2 {
     color: #0d3b66;
@@ -72,7 +70,7 @@ h2 {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-     margin-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 .school-list h3 {
     color: #0d3b66;
@@ -81,7 +79,7 @@ h2 {
     font-size: 1.2em;
 }
 .school-list:last-child {
-    margin-bottom: 0 !important; /* Ajouté */
+    margin-bottom: 0 !important;
 }
 .school-list p {
     color: #333333;
@@ -112,7 +110,7 @@ h2 {
     left: 0;
     right: 0;
     flex-shrink: 0;
- margin-top: 0 !important;
+    margin-top: 0 !important;
 }
 .footer-content {
     display: flex;
@@ -160,61 +158,78 @@ hr {
                 <option value="#constantine">Constantine</option>
                 <option value="#annaba">Annaba</option>
                 <option value="#tizi-ouzou">Tizi Ouzou</option>
-                <option value="#batna">Batna</option>
-                <option value="#blida">Blida</option>
-                <option value="#biskra">Biskra</option>
-                <option value="#chlef">Chlef</option>
-                <option value="#douira">Douira</option>
-                <option value="#eloudiah">El Oued</option>
                 <option value="#tlemcen">Tlemcen</option>
-                <option value="#laghouat">Laghouat</option>
-                <option value="#ghardaia">Ghardaïa</option>
-                <option value="#skeikda">Skeikda</option>
-                <option value="#mila">Mila</option>
-                <option value="#tipaza">Tipaza</option>
-                <option value="#setif">Sétif</option>
-                <option value="#sidi-bel-abbes">Sidi Bel Abbès</option>
-                <option value="#bejaia">Béjaïa</option>
-                <option value="#khenchela">Khenchela</option>
-                <option value="#medea">Médéa</option>
-                <option value="#naama">Naâma</option>
-                <option value="#el-tarf">El Tarf</option>
-                <option value="#ain-temouchent">Aïn Témouchent</option>
-                <option value="#el-bayadh">El Bayadh</option>
-                <option value="#ain-defla">Aïn Defla</option>
-                <option value="#bouira">Bouira</option>
-                <option value="#souk-ahras">Souk Ahras</option>
-                <option value="#djelfa">Djelfa</option>
-                <option value="#bordj-bou-arreridj">Bordj Bou Arreridj</option>
-                <option value="#ouargla">Ouargla</option>
             </select>
         </div>
 
-        <!-- Toutes les listes d'écoles par wilaya (inchangées) -->
+        <!-- Alger -->
         <div id="alger" class="school-list">
             <h3>Écoles à Alger</h3>
             <p>Les écoles de langues à Alger offrent diverses options pour apprendre différentes langues.</p>
             <ul>
-                <li>École de Langues ABC</li>
-                <li>Institut Linguistique XYZ</li>
-                <li>Centre de Langues Alger</li>
+                <li>British Council Alger</li>
+                <li>Institut Français d’Algérie (IFA) – Alger</li>
+                <li>Wall Street English Alger</li>
+                <li>Berlitz Alger</li>
+                <li>International House Alger</li>
+                <li>Ecole El Kalimat</li>
+                <li>Ecole Polyglotte</li>
+                <li>Centre Culturel Italien d’Alger</li>
+                <li>Goethe-Institut Alger</li>
             </ul>
         </div>
-        <!-- ... (toutes les autres wilayas, inchangées) ... -->
-        <div id="ouargla" class="school-list">
-            <h3>Écoles à Ouargla</h3>
-            <p>Ouargla offre des options d'enseignement linguistique diversifiées.</p>
+
+        <!-- Oran -->
+        <div id="oran" class="school-list">
+            <h3>Écoles à Oran</h3>
+            <p>Quelques écoles de langues connues à Oran :</p>
             <ul>
-                <li>Institut de Langues d'Ouargla</li>
-                <li>École de Langues de Ouargla</li>
-                <li>Centre de Langues de Ouargla</li>
+                <li>Institut Français d’Algérie (IFA) – Oran</li>
+                <li>Wall Street English Oran</li>
+                <li>Berlitz Oran</li>
+                <li>British Language Institute Oran</li>
+            </ul>
+        </div>
+
+        <!-- Constantine -->
+        <div id="constantine" class="school-list">
+            <h3>Écoles à Constantine</h3>
+            <p>Quelques écoles de langues connues à Constantine :</p>
+            <ul>
+                <li>Institut Français d’Algérie (IFA) – Constantine</li>
+                <li>British Language Institute Constantine</li>
+            </ul>
+        </div>
+
+        <!-- Annaba -->
+        <div id="annaba" class="school-list">
+            <h3>Écoles à Annaba</h3>
+            <p>Quelques écoles de langues connues à Annaba :</p>
+            <ul>
+                <li>Institut Français d’Algérie (IFA) – Annaba</li>
+            </ul>
+        </div>
+
+        <!-- Tizi Ouzou -->
+        <div id="tizi-ouzou" class="school-list">
+            <h3>Écoles à Tizi Ouzou</h3>
+            <p>Quelques écoles de langues connues à Tizi Ouzou :</p>
+            <ul>
+                <li>Institut Français d’Algérie (IFA) – Tizi Ouzou</li>
+            </ul>
+        </div>
+
+        <!-- Tlemcen -->
+        <div id="tlemcen" class="school-list">
+            <h3>Écoles à Tlemcen</h3>
+            <p>Institut Français d’Algérie (IFA) – Tlemcen</p>
+            <ul>
+                <li>Institut Français d’Algérie (IFA) – Tlemcen</li>
             </ul>
         </div>
     </div>
-<br>
-    <!-- ...existing code... -->
-    </div>
-    <!-- SUPPRIME le <br> ici -->
+    <br>
+
     <div class="footer-section">
         <div class="footer-content">
             <div class="footer-info">
@@ -242,7 +257,6 @@ hr {
             <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>
         </div>
     </div>
-<!-- ...existing code... -->
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
         document.getElementById('wilayaSelect').addEventListener('change', function() {
