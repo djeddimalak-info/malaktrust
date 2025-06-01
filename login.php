@@ -15,50 +15,33 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signIn'])) {
     $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
+    $code = trim($_POST['password']);  // Le code est envoyé dans le champ password
     $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : (isset($_POST['redirect']) ? $_POST['redirect'] : '');
 
-    $sql = "SELECT a.*, u.password FROM assistantagence a JOIN utilisateur u ON a.email = u.email WHERE a.email = ?";
+    $sql = "SELECT * FROM assistantagence WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Vérifie s’il existe un compte avec cet email
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        $dbCode = $row['code'];
 
-        // Vérifie si le compte est validé par l’admin
-        if ($row['validation_admin'] !== 'oui') {
-            $signInError = "Votre compte n'est pas encore validé par l'administration.";
-        } else if (array_key_exists('password', $row) && !empty($row['password'])) {
-            $dbPassword = $row['password'];
-
-            // Vérifie si le mot de passe est haché ou non
-            if ((strlen($dbPassword) > 30 && strpos($dbPassword, '$2y$') === 0) || strpos($dbPassword, '$argon2') === 0) {
-                $isValid = password_verify($password, $dbPassword);
-            } else {
-                $isValid = ($password === $dbPassword);
-            }
-
-            if ($isValid) {
-                $_SESSION['email'] = $row['email'];
-                $destination = (!empty($redirect) && preg_match('/^[a-zA-Z0-9_.-]+\\.php$/', $redirect)) ? $redirect : 'dashbord.php';
-                header("Location: $destination");
-                exit();
-            } else {
-                $signInError = "Email ou mot de passe incorrect.";
-            }
+        if ($code === $dbCode) {
+            $_SESSION['email'] = $row['email'];
+            $destination = (!empty($redirect) && preg_match('/^[a-zA-Z0-9_.-]+\\.php$/', $redirect)) ? $redirect : 'dashbord.php';
+            header("Location: $destination");
+            exit();
         } else {
-            $signInError = "Erreur interne : le compte assistant n'a pas de mot de passe enregistré.";
+            $signInError = "Email ou code incorrect.";
         }
     } else {
-        $signInError = "Email ou mot de passe incorrect.";
+        $signInError = "Email ou code incorrect.";
     }
 }
 ?>
 
- 
 <!DOCTYPE html>  
 <html lang="fr">  
 <head>  
