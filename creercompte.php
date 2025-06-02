@@ -24,16 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($email) || empty($motdepasse) || empty($numero_de_telephone) || empty($prenom) || empty($nom) || empty($date_naissance)) {
         $message = "Veuillez remplir tous les champs obligatoires.";
     } elseif (!preg_match('/^0[675][0-9]{8}$/', $numero_de_telephone)) {
-        $message = "Le numéro de téléphone doit commencer par 05, 06 ou 07 et contenir 9 chiffres au total.";
-    } elseif (!preg_match('/^(?=.*[a-zA-Z])(?=.*\d).+$/', $motdepasse)) {
+        $message = "Le numéro de téléphone doit commencer par 05, 06 ou 07 et contenir 10 chiffres au total."; // verfication de numero
+    } elseif (!preg_match('/^(?=.*[a-zA-Z])(?=.*\d).+$/', $motdepasse)) {// vrfi  fomart de mdp
         $message = "Le mot de passe doit contenir au moins une lettre et un chiffre.";
     } else {
-        $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email");
+        $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email"); // cherche daans utilisateur
         $stmt->execute([':email' => $email]);
         if ($stmt->fetch()) {
-            $message = "Un compte avec cet email existe déjà.";
-        } else {
-            $hash = password_hash($motdepasse, PASSWORD_DEFAULT);
+            $message = "Un compte avec cet email existe déjà."; //si deja existe 
+        } else {// si pas
+            $hash = password_hash($motdepasse, PASSWORD_DEFAULT); // on hash mdp
 
             $stmt = $conn->prepare("INSERT INTO utilisateur (email, numero_de_telephone, password, date_naissance, nom, prenom) VALUES (:email, :numero_de_telephone, :password, :date_naissance, :nom, :prenom)");
             $stmt->execute([
@@ -43,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':date_naissance' => $date_naissance,
                 ':nom' => $nom,
                 ':prenom' => $prenom
-            ]);
+            ]); // stocke tous
 
             $stmt2 = $conn->prepare("INSERT INTO etudiant (email) VALUES (:email)");
-            $stmt2->execute([':email' => $email]);
+            $stmt2->execute([':email' => $email]); // stock dans etudiant 
 
             $message = "Compte étudiant créé avec succès !";
         }

@@ -17,7 +17,7 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Réc fichiers et la date
+    //  fichiers  par  date
     $stmt = $conn->query("SELECT d.IDT, d.email, d.date_creation, f.IDF, f.nom_fichier, f.langue, f.type_fichier FROM demandetraduction d LEFT JOIN fichiertraduction f ON d.IDT = f.IDT ORDER BY d.IDT DESC");
     $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

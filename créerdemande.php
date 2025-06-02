@@ -21,12 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_password = $_POST['password'] ?? '';
     $objet = $_POST['objet'] ?? '';
     $msg = $_POST['message'] ?? '';
-
-  
     $universites = [];
     $specialites = [];
     $niveaux = [];
-    $i = 1;
+    $i = 1; // pls lignes
     while (isset($_POST["universite-$i"])) {
         $universites[] = $_POST["universite-$i"];
         $specialites[] = $_POST["specialite-$i"];
@@ -36,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
      
     if (empty($idd) || empty($email) || empty($user_password) || empty($objet) || empty($msg) || empty($universites)) {
-        $message = "Veuillez remplir tous les champs obligatoires.";
+        $message = "Veuillez remplir tous les champs obligatoires."; /// test avec empty
     } else {
     
-        $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email");
+        $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email"); // chercher dans uti
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch();
 
@@ -53,14 +51,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             if ($isValid) {
-                // Vérifier si l'IDD existe déjà dans la table demande
-                $stmtCheck = $conn->prepare("SELECT COUNT(*) FROM demande WHERE IDD = :idd");
+                //  si l'IDD  dans  demande
+                $stmtCheck = $conn->prepare("SELECT COUNT(*) FROM demande WHERE IDD = :idd"); // si est trouvé
                 $stmtCheck->execute([':idd' => $idd]);
                 $iddExists = $stmtCheck->fetchColumn() > 0;
                 if ($iddExists) {
                     $message = "Cet identifiant de demande existe déjà. Veuillez en choisir un autre.";
                 } else {
-                     
+                      // sinon on stocke
                     $stmt2 = $conn->prepare("INSERT INTO demande (IDD, email, Objet, Message, universite, specialite, niveau, date_creation) VALUES (:idd, :email, :objet, :message, :universite, :specialite, :niveau, NOW())");
                     foreach ($universites as $index => $universite) {
                         $stmt2->execute([
@@ -90,14 +88,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <title>Formulaire de Demande</title>  
-  <!-- Lien vers Bootstrap -->  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
-  <!-- Lien vers Font Awesome -->  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  
   <style>  
    body {  
-  margin: 0; /* Supprimer la marge par défaut du body */  
-  padding: 0; /* Supprimer le remplissage par défaut du body */  
+  margin: 0;  
+  padding: 0;  
   background-color: #e9ecef;  
   font-family: Arial, sans-serif;  
   display: flex;  
@@ -201,11 +197,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       margin-top: 10px;  
     }  
     .footer-section {  
-        background-color: #003366; /* Bleu foncé */  
-        color: white; /* Texte blanc */  
+        background-color: #003366;  
+        color: white;  
         padding: 20px;  
         margin-top: 30px;
-        font-family: Arial, Helvetica, sans-serif; /* Espace entre le contenu et le footer */  
+        font-family: Arial, Helvetica, sans-serif;  
     }  
 
     .footer-content {  

@@ -15,28 +15,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $langues = $_POST['langues'] ?? [];
     $files = $_FILES['fichiers'];
 
-    // Vérifier que tous les champs obligatoires sont remplis
-    if (empty($email) || empty($password) || empty($langues) || empty($files['name'][0])) {
+    // Vérification des champs  remplis
+    if (empty($email) || empty($password) || empty($langues) || empty($files['name'][0])) {   
         $message = "<div class='alert alert-danger text-center'>Veuillez remplir tous les champs et sélectionner au moins un fichier.</div>";
     } else {
-        // Vérifier les identifiants de l'utilisateur
-        $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = ?");
-        $stmt->execute([$email]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        //  si tous sont remple alors le test sur  les identifiants de l'utilisateur
+        $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = ?");// séléction de email de la table utilisateur 
+        $stmt->execute([$email]);  
+        $row = $stmt->fetch(PDO::FETCH_ASSOC); // recherche 
 
-        if (!$row) {
+        if (!$row) { // non trouver dans row
             $message = "<div class='alert alert-danger text-center'>Email introuvable dans utilisateur.</div>";
         } elseif ((strlen($row['password']) > 30 && strpos($row['password'], '$2y$') === 0) || strpos($row['password'], '$argon2') === 0 ? !password_verify($password, $row['password']) : $password !== $row['password']) {
-            $message = "<div class='alert alert-danger text-center'>Mot de passe incorrect.</div>";
+            $message = "<div class='alert alert-danger text-center'>Mot de passe incorrect.</div>";// mdp not accp  (password n'est pas le meme ou vide ..... )
         } else {
-            // Vérifier que l'email existe dans la table etudiant (clé étrangère)
+            // Vérification dans table etudiant 
             $stmtEtudiant = $conn->prepare("SELECT * FROM etudiant WHERE email = ?");
             $stmtEtudiant->execute([$email]);
             $rowEtudiant = $stmtEtudiant->fetch(PDO::FETCH_ASSOC);
             if (!$rowEtudiant) {
                 $message = "<div class='alert alert-danger text-center'>Cet email n'est pas enregistré comme étudiant. Veuillez créer un compte étudiant avant de soumettre une demande de traduction.</div>";
             } else {
-                // Insérer la demande (on stocke le hash du mot de passe)
+                // Insérer la demande (  hash mot de passe)
                 $stmt = $conn->prepare("INSERT INTO demandetraduction (email, password, date_creation) VALUES (:email, :password, NOW())");
                 $stmt->execute(array(
                     ':email' => $email,
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ));
                 $IDT = $conn->lastInsertId();
                 // Enregistrer chaque fichier
-                foreach ($files['tmp_name'] as $i => $tmpName) {
+                foreach ($files['tmp_name'] as $i => $tmpName) { // pour chaque c'est une boucle
                     if ($files['error'][$i] === UPLOAD_ERR_OK) {
                         $extension = pathinfo($files['name'][$i], PATHINFO_EXTENSION);
                         $nouveauNom = uniqid() . '.' . $extension;
@@ -81,17 +81,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         }
                     }
                 }
-                // Afficher le message de succès uniquement après la création
+                //   message de succès après  création
                 $message = "<div class='alert alert-success text-center'>Demande enregistrée avec succès !</div>";
                 unset($lastDemande, $lastFichiers);
-                // Utiliser le pattern PRG pour éviter la resoumission, mais passer le message via l'URL
+                //   pattern PRG pr éviter la resoumission, mais passer le message via l'URL
                 header('Location: ' . $_SERVER['PHP_SELF'] . '?success=1');
                 exit;
             }
         }
     }
 }
-// Affichage du message de succès si redirection
+//  message de succès si redirection
 if (isset($_GET['success']) && $_GET['success'] == '1') {
     $message = "<div class='alert alert-success text-center'>Demande enregistrée avec succès !</div>";
 }
@@ -103,7 +103,7 @@ if (isset($_GET['success']) && $_GET['success'] == '1') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uploader des Documents</title>
-    <!-- Bootstrap CSS -->
+     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>

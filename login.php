@@ -15,7 +15,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signIn'])) {
     $email = trim($_POST['email']);
-    $code = trim($_POST['password']);  // Le code est envoyé dans le champ password
+    $code = trim($_POST['password']);  // Le code est envoyé dans le champ password (il fait la verfivation de code normal)dans html
     $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : (isset($_POST['redirect']) ? $_POST['redirect'] : '');
 
     $sql = "SELECT * FROM assistantagence WHERE email = ?";
@@ -26,11 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signIn'])) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $dbCode = $row['code'];
+        $dbCode = $row['code']; // cherche dans colonne code
 
         if ($code === $dbCode) {
             $_SESSION['email'] = $row['email'];
-            $destination = (!empty($redirect) && preg_match('/^[a-zA-Z0-9_.-]+\\.php$/', $redirect)) ? $redirect : 'dashbord.php';
+            $destination = (!empty($redirect) && preg_match('/^[a-zA-Z0-9_.-]+\\.php$/', $redirect)) ? $redirect : 'dashbord.php';// tous est ok
             header("Location: $destination");
             exit();
         } else {

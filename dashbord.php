@@ -97,7 +97,7 @@ h2 {
 .action-btn:hover {
     background: #3949ab;
 }
-/* Barre de navigation */
+ 
 .custom-navbar {
     width: 100%;
     background: #1a237e;
@@ -109,10 +109,10 @@ h2 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Nom de l'agence (Trust Education) */
+ 
 .navbar-title {
     color: #fff;
-    font-size: 1.2em;  /* Plus petit */
+    font-size: 1.2em;  
     font-weight: 600;
     letter-spacing: 0.5px;
 }
@@ -142,7 +142,7 @@ h2 {
     padding: 2px;
 }
 
-/* Bouton Déconnexion */
+ 
 .logout-btn {
     background: #43a047;
     color: #fff;
@@ -152,7 +152,7 @@ h2 {
     border: none;
     border-radius: 6px;
     text-decoration: none;
-    margin-right: 70px; /* Décalé un peu à droite */
+    margin-right: 70px; 
     transition: background 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px rgba(67, 160, 71, 0.1);
 }
@@ -197,8 +197,8 @@ h2 {
             </tr>
         </thead>
         <tbody>
-        <?php if (empty($demandes)): ?>
-            <tr><td colspan="9" style="text-align:center;">Aucune demande trouvée.</td></tr>
+        <?php if (empty($demandes)): ?> 
+            <tr><td colspan="9" style="text-align:center;">Aucune demande trouvée.</td></tr> 
         <?php else: ?>
             <?php foreach ($demandes as $demande): ?>
             <tr>

@@ -1,2 +1,0 @@
-Avant insertion: i=0, fichier=683e1b78540dc.pdf, langue=pl
-Insertion OK: i=0, fichier=683e1b78540dc.pdf, langue=pl

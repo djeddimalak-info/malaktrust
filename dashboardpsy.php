@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 session_start(); 
 
 if (!isset($_SESSION['email'])) {
-    header('Location: login.php');
+    header('Location: login.php');    // il pas dabors vers login
     exit;
 }
 $host = '127.0.0.1';
@@ -17,7 +17,7 @@ try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->query("SELECT * FROM demande_psy ORDER BY IDDP DESC");
+    $stmt = $conn->query("SELECT * FROM demande_psy ORDER BY IDDP DATE"); // tous les demande by date
     $demandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {
     die("Erreur : " . $e->getMessage());

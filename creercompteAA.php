@@ -9,8 +9,8 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
-}
-$message = "";
+} 
+$message = ""; // formulaire dans var pour chaque une des attru
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
@@ -18,17 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prenom = $_POST['firstname'] ?? '';
     $nom = $_POST['lastname'] ?? '';
     $date_naissance = $_POST['birthdate'] ?? '';
-
+// test des champs vide avec empty 
     if (empty($email) || empty($password) || empty($numero_de_telephone) || empty($prenom) || empty($nom) || empty($date_naissance)) {
-        $message = "Veuillez remplir tous les champs obligatoires.";
-    } else {
-        $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email");
+        $message = "Veuillez remplir tous les champs obligatoires.";  
+    } else { // si sont tous remplie
+        $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email"); // recherche dans utilisateur
         $stmt->execute([':email' => $email]);
         if ($stmt->fetch()) {
-            $message = "Un compte avec cet email existe déjà.";
-        } else {
+            $message = "Un compte avec cet email existe déjà.";  // si existe 
+        } else { // si pas 
             $stmt = $conn->prepare("INSERT INTO utilisateur (email, numero_de_telephone, password, date_naissance, nom, prenom) VALUES (:email, :numero_de_telephone, :password, :date_naissance, :nom, :prenom)");
-            $stmt->execute([
+            $stmt->execute([ //stock dans utilisateur
                 ':email' => $email,
                 ':numero_de_telephone' => $numero_de_telephone,
                 ':password' => $password,
@@ -37,8 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':prenom' => $prenom
             ]);
             $stmt2 = $conn->prepare("INSERT INTO assistantagence (email) VALUES (:email)");
-            $stmt2->execute([':email' => $email]);
-
+            $stmt2->execute([':email' => $email]); ///stocke dans assistantagence
             $message = "Compte assistant créé avec succès !";
         }
     }
