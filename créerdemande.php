@@ -325,73 +325,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>  
 <body>
  
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="your-logo.png" alt="Logo" />
-        </a>
-        <span style="color:rgb(5, 39, 50); font-size: 1.3em;" class="navbar-text">Trust Education</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="pageaccueil.html">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="propos.html">À propos</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUniversities" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Universités
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownUniversities">
-                        <a class="dropdown-item" href="pologne.html">Université polonaise</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="russie.html">Université russe</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Langues
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownLanguages">
-                        <a class="dropdown-item" href="applicationslangues.html">Applications de langues</a>
-                        <a class="dropdown-item" href="ecoleslangues.html">Écoles de langues</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Payes
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownLanguages">
-                        <a class="dropdown-item" href="Payes.html">Russie</a>
-                        <a class="dropdown-item" href="payes1.html">Pologne</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Connexion
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="creercompteAA.html">Assistant</a>
-                        <a class="dropdown-item" href="creercompte.html">Étudiant</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dashoard
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="login.php?redirect=dashbord.php"> Dashoard</a>
-                        <a class="dropdown-item" href="login.php?redirect=DashboardTraduction.php"> Dashoard Traduction</a>
-                        <a class="dropdown-item" href="login.php?redirect=dashboardpsy.php"> Dashoard Psychologue</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div style="padding-top:90px;"></div>
+ 
+<div style="padding-top:10px;"></div>
 <div class="text-center my-4">
   <button class="btn btn-darkblue btn-lg" style="font-size:1.0em;padding:14px 36px;box-shadow:0 2px 8px #001f3f33;letter-spacing:0.5px;border-radius:10px;" onclick="window.location.href='consulterdemande.php'">
     <i class="fas fa-search"></i> Consulter une demande

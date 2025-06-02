@@ -1,210 +1,115 @@
 <!DOCTYPE html>  
 <html lang="fr">  
 <head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Démarches d'études en Russie</title>  
-     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
-    <style>  
-        body {  
-            background-color: #f8f9fa;  
-        }  
-        header {  
-            background-color: #05305d;   
-        }  
-        footer {  
-            background-color: #d6e2ef;    
-        }  
-        section {  
-            animation: fadeIn 0.5s;  
-            margin-top: 2rem;  
-        }  
-        @keyframes fadeIn {  
-            from { opacity: 0; }  
-            to { opacity: 1; }  
-        }  
-        .slideIn {  
-            animation: slideIn 0.5s forwards;  
-        }  
-        @keyframes slideIn {  
-            from { transform: translateX(-100%); opacity: 0; }  
-            to { transform: translateX(0); opacity: 1; }  
-        }  
-        .footer-section {  
-        background-color: #003366;   
-        color: white;  
-        padding: 20px;  
-        margin-top: 30px;
-        font-family: Arial, Helvetica, sans-serif;    
-    }  
-
-    .footer-content {  
-        display: flex;  
-        justify-content: space-between;  
-        flex-wrap: wrap;  
-        padding: 20px 0;  
-    }  
-
-    .footer-info,  
-    .footer-links,  
-    .footer-contact {  
-        flex: 1;   
-        min-width: 200px;  
-        margin: 10px;    
-    }  
-
-    .footer-links ul {  
-        list-style-type: none;    
-        padding: 0;   
-    }  
-
-    .footer-links a {  
-        color: white;    
-        text-decoration: none;   
-    }  
-
-    .footer-links a:hover {  
-        text-decoration: underline;  
-    }  
-
-    .footer-bottom {  
-        text-align: center;   
-        margin-top: 20px;   
-    }  
-
-    hr {  
-        border: 1px solid white;   
-        margin: 10px 0;   
-    } 
-    </style>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Démarches d'études en Russie</title>  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  
+  <style>  
+    body { background-color: #f8f9fa; }  
+    header { background-color: #05305d; }  
+    footer { background-color: #d6e2ef; }  
+    section { animation: fadeIn 0.5s; margin-top: 2rem; }  
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }  
+    .slideIn { animation: slideIn 0.5s forwards; }  
+    @keyframes slideIn { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }  
+    .footer-section { background-color: #003366; color: white; padding: 20px; margin-top: 30px; font-family: Arial, Helvetica, sans-serif; }  
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; padding: 20px 0; }  
+    .footer-info, .footer-links, .footer-contact { flex: 1; min-width: 200px; margin: 10px; }  
+    .footer-links ul { list-style-type: none; padding: 0; }  
+    .footer-links a { color: white; text-decoration: none; }  
+    .footer-links a:hover { text-decoration: underline; }  
+    .footer-bottom { text-align: center; margin-top: 20px; }  
+    hr { border: 1px solid white; margin: 10px 0; }  
+  </style>  
 </head>  
 <body>  
-    <header class="text-white text-center py-4">  
-        <h2 style="font-family: serif;">Démarches d'études dans les universités de Russie</h2>  
-    </header>  
+  <header class="text-white text-center py-4">  
+    <h2 style="font-family: serif;">Démarches d'études dans les universités de Russie</h2>  
+  </header>  
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">  
-        <a style="font-family: serif; color: #05305d;" class="navbar-brand" href="#">Universités en Russie</a>  
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">  
-            <span class="navbar-toggler-icon"></span>  
-        </button>  
-        <div class="collapse navbar-collapse" id="navbarNav">  
-            <ul class="navbar-nav">  
-                <li class="nav-item">  
-                    <a style="font-family: serif; color: #05305d;" class="nav-link" href="#langues">Langues d'enseignement</a>  
-                </li>  
-                <li class="nav-item">  
-                    <a style="font-family: serif; color: #05305d;" class="nav-link" href="#annees-preparatoires">Années préparatoires</a>  
-                </li>  
-                <li class="nav-item">  
-                    <a style="font-family: serif; color: #05305d;" class="nav-link" href="#conditions-admission">Conditions d'admission</a>  
-                </li>  
-                <li class="nav-item">  
-                    <a style="font-family: serif; color: #05305d;" class="nav-link" href="#financement">Financement et bourses</a>  
-                </li>  
-                <li class="nav-item">  
-                    <a style="font-family: serif; color: #05305d;" class="nav-link" href="#frais-etudes">Frais d'études</a>  
-                </li>  
-            </ul>  
-        </div>  
-    </nav>  
-
-    <div class="container mt-4">  
-        <section id="langues" class="slideIn">  
-            <h2 style="font-family: serif; color: #05305d;">Langues d'enseignement :</h2>  
-            <p>Les universités russes offrent des programmes dans plusieurs langues :</p>  
-            <ul>  
-                <li><strong>Russe :</strong> La langue principale d'enseignement. La plupart des programmes de premier cycle et de cycles supérieurs sont dispensés en russe.</li>  
-                <li><strong>Anglais :</strong> De plus en plus d'universités proposent des programmes en anglais, notamment dans les domaines de l'économie, de l'ingénierie et des sciences sociales.</li>  
-                <li><strong>Français :</strong> Certaines universités offrent également des programmes en français, bien que ceux-ci soient moins courants.</li>  
-            </ul>  
-            <p>Il est conseillé d'avoir un niveau suffisant dans la langue choisie pour suivre les cours efficacement.</p>  
-        </section>  
-
-        <section id="annees-preparatoires" class="mt-4 slideIn">  
-            <h2 style="font-family: serif; color: #05305d;">Années préparatoires :</h2>  
-            <p>Pour les étudiants qui ne maîtrisent pas suffisamment le russe ou l'anglais, de nombreuses universités offrent des programmes d'année préparatoire :</p>  
-            <ul>  
-                <li>Ces programmes durent généralement un an.</li>  
-                <li>Ils incluent souvent des cours intensifs de langue ainsi que des matières académiques de base.</li>  
-                <li>À l'issue de cette année, les étudiants passent un examen qui leur permet d'entrer dans le programme de leur choix.</li>  
-                <li>Si vous avez déjà un diplôme en russe, il n'est pas toujours obligatoire de passer par l'année préparatoire.</li>  
-                <li>Pour ceux qui souhaitent étudier en anglais ou en français sans maîtriser ces langues, l'année préparatoire est souvent recommandée.</li>  
-            </ul>  
-        </section>  
-
-        <section id="conditions-admission" class="mt-4 slideIn">  
-            <h2 style="font-family: serif; color: #05305d;">Conditions d'admission</h2>  
-            <p>Les conditions d'admission peuvent varier d'une université à l'autre mais incluent généralement :</p>  
-            <ul>  
-                <li>Un diplôme de fin d'études secondaires (pour les programmes de premier cycle).</li>  
-                <li>Des résultats d'examens d'entrée ou un entretien.</li>  
-                <li>Une preuve de compétence linguistique dans la langue choisie.</li>  
-            </ul>  
-        </section>  
-
-        <section id="financement" class="mt-4 slideIn">  
-            <h2 style="font-family: serif; color: #05305d;">Financement et bourses</h2>  
-            <p>Des options de financement sont disponibles pour les étudiants internationaux :</p>  
-            <ul>  
-                <li><strong>Bourses d'étude :</strong> Plusieurs universités et organisations offrent des bourses pour les étudiants étrangers.</li>  
-                <li><strong>Emplois étudiants :</strong> Certains étudiants trouvent des emplois à temps partiel pour soutenir leurs études et leur vie quotidienne.</li>  
-            </ul>  
-        </section>  
-
-        <section id="frais-etudes" class="mt-4 slideIn">  
-            <h2 style="font-family: serif; color: #05305d;">Frais d'études</h2>  
-            <p>Les frais d'études en Russie varient selon l'université et le programme choisi :</p>  
-            <ul>  
-                <li>Pour les programmes de premier cycle, les frais annuels sont généralement compris entre <strong>200 000 et 600 000 roubles</strong> (environ 3 000 à 10 000 USD).</li>  
-                <li>Pour les cycles supérieurs, les frais peuvent aller de <strong>250 000 à 700 000 roubles</strong> (environ 4 000 à 11 000 USD).</li>  
-                <li>Ces frais incluent généralement les cours et l'accès aux installations universitaires, mais peuvent ne pas couvrir les coûts de la vie quotidienne, tels que le logement, la nourriture, et les transports.</li>  
-            </ul>  
-            <p>Il est conseillé de vérifier les frais spécifiques de l'université choisie et de prendre en considération les options de financement disponibles.</p>  
-        </section>  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">  
+    <a style="font-family: serif; color: #05305d;" class="navbar-brand" href="#">Universités en Russie</a>  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">  
+      <span class="navbar-toggler-icon"></span>  
+    </button>  
+    <div class="collapse navbar-collapse" id="navbarNav">  
+      <ul class="navbar-nav">  
+        <li class="nav-item"><a class="nav-link" style="font-family: serif; color: #05305d;" href="#langues">Langues d'enseignement</a></li>  
+        <li class="nav-item"><a class="nav-link" style="font-family: serif; color: #05305d;" href="#annees-preparatoires">Années préparatoires</a></li>  
+        <li class="nav-item"><a class="nav-link" style="font-family: serif; color: #05305d;" href="#conditions-admission">Conditions d'admission</a></li>  
+        <li class="nav-item"><a class="nav-link" style="font-family: serif; color: #05305d;" href="#financement">Financement et bourses</a></li>  
+        <li class="nav-item"><a class="nav-link" style="font-family: serif; color: #05305d;" href="#frais-etudes">Frais d'études</a></li>  
+      </ul>  
     </div>  
+  </nav>  
 
-    <footer class="text-white text-center py-4 mt-4" style="background-color: #ffffff;">  
-        <h5 style="color: rgb(22, 122, 230);">Pour plus d'informations, veuillez contacter notre agence TrustEducation.</h5>  
-         
-    </footer>  
-    <div class="footer-section">  
-        <div class="footer-content">  
-            <div class="footer-info">  
-                <h5><i class="fas fa-info-circle"></i> À Propos de Nous</h5>  
-                <hr>  
-                <p>Nous sommes spécialisés dans l'accompagnement des étudiants pour leurs démarches d'études en Pologne et en Russie.</p>  
-            </div>  
-            <div class="footer-links">  
-                <h5><i class="fas fa-link"></i> Liens Utiles</h5>  
-                <hr>  
-                <ul>  
-                    <li><a href="https://www.instagram.com/votreprofil" target="_blank">  Instagram <i class="fab fa-instagram"></i></a></li>  
-                    <li><a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>  
-                    <li><a href="propos.html">À Propos</a></li>  
-                </ul>  
-            </div>  
-            <div class="footer-contact">  
-                <h5><i class="fas fa-envelope"></i> Contact</h5>  
-                <hr>  
-                <p>Email: <a href="mailto:contact@votreorganisation.com">contact@votreorganisation.com</a></p>  
-                <p>Téléphone: <a href="tel:+123456789">+33 1 23 45 67 89</a></p>  
-            </div>  
-        </div>  
-        <div class="footer-bottom">  
-            <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>  
-        </div>  
-    </div>
-    
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
-     
+  <div class="container mt-4">  
+    <section id="langues" class="slideIn">  
+      <h2 style="font-family: serif; color: #05305d;">Langues d'enseignement :</h2>  
+      <p>Les universités russes offrent des programmes dans plusieurs langues :</p>  
+      <ul>  
+        <li><strong>Russe :</strong> La langue principale d'enseignement.</li>  
+        <li><strong>Anglais :</strong> Proposé notamment dans l'économie, l'ingénierie et les sciences sociales.</li>  
+        <li><strong>Français :</strong> Présent dans quelques universités.</li>  
+      </ul>  
+      <p>Il est conseillé d'avoir un niveau suffisant dans la langue choisie.</p>  
+    </section>  
 
- 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>  
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>  
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
-</body>  
-</html>
+    <section id="annees-preparatoires" class="mt-4 slideIn">  
+      <h2 style="font-family: serif; color: #05305d;">Années préparatoires :</h2>  
+      <p>Pour les étudiants ne maîtrisant pas la langue d’enseignement :</p>  
+      <ul>  
+        <li>Durée : un an en général.</li>  
+        <li>Cours de langue intensifs + matières de base.</li>  
+        <li>Examen en fin d'année pour accéder au programme.</li>  
+        <li>Parfois non obligatoire si vous avez déjà étudié en russe.</li>  
+      </ul>  
+    </section>  
+
+    <section id="conditions-admission" class="mt-4 slideIn">  
+      <h2 style="font-family: serif; color: #05305d;">Conditions d'admission</h2>  
+      <ul>  
+        <li>Diplôme de fin d'études secondaires.</li>  
+        <li>Résultats d'examen ou entretien.</li>  
+        <li>Preuve de compétence linguistique.</li>  
+      </ul>  
+    </section>  
+
+    <section id="financement" class="mt-4 slideIn">  
+      <h2 style="font-family: serif; color: #05305d;">Financement et bourses</h2>  
+      <ul>  
+        <li><strong>Bourses :</strong> Disponibles pour étudiants étrangers.</li>  
+        <li><strong>Emplois étudiants :</strong> Autorisés à temps partiel.</li>  
+      </ul>  
+    </section>  
+
+    <section id="frais-etudes" class="mt-4 slideIn">  
+      <h2 style="font-family: serif; color: #05305d;">Frais d'études</h2>  
+      <ul>  
+        <li>Premier cycle : 200 000–600 000 roubles (3 000–10 000 USD).</li>  
+        <li>Cycles supérieurs : 250 000–700 000 roubles (4 000–11 000 USD).</li>  
+        <li>Les frais couvrent l'enseignement et l'accès aux installations.</li>  
+      </ul>  
+    </section>  
+  </div>  
+
+  <footer class="text-white text-center py-4 mt-4" style="background-color: #ffffff;">  
+    <h5 style="color: rgb(22, 122, 230);">Pour plus d'informations, veuillez contacter notre agence TrustEducation.</h5>  
+  </footer>  
+
+  <div class="footer-section">  
+    <div class="footer-content">  
+      <div class="footer-info">  
+        <h5><i class="fas fa-info-circle"></i> À Propos de Nous</h5>  
+        <hr>  
+        <p>Nous accompagnons les étudiants pour leurs études en Pologne et en Russie.</p>  
+      </div>  
+      <div class="footer-links">  
+        <h5><i class="fas fa-link"></i> Liens Utiles</h5>  
+        <hr>  
+        <ul>  
+          <li><a href="https://www.instagram.com/votreprofil" target="_blank">Instagram <i class="fab fa-instagram"></i></a></li>  
+          <li><a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>  
+          <li>

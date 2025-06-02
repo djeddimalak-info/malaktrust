@@ -1,57 +1,78 @@
 <?php
-// Connexion à la BDD
-$host='127.0.0.1'; $dbname='trusteducation'; $user='root'; $pass='';
-try { $pdo=new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",$user,$pass); }
-catch(PDOException $e) { die("Erreur : " . $e->getMessage()); }
+// Connexion à la base de données
+$host = '127.0.0.1';
+$dbname = 'trusteducation';
+$user = 'root';
+$pass = '';
+
+try {
+    // Connexion PDO avec encodage UTF-8
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
 
 $message = '';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $idd = trim($_POST['identifiant']);
-  $email = trim($_POST['email']);
-  $password = trim($_POST['motdepasse']);
 
-  // 1. Vérifier que l'email existe dans utilisateur et que le mot de passe est correct
-  $stmtUser = $pdo->prepare("SELECT * FROM utilisateur WHERE email = :email");
-  $stmtUser->execute([':email' => $email]);
-  $utilisateur = $stmtUser->fetch(PDO::FETCH_ASSOC);
-  $isValid = false;
-  if ($utilisateur) {
-    if ((strlen($utilisateur['password']) > 30 && strpos($utilisateur['password'], '$2y$') === 0) || strpos($utilisateur['password'], '$argon2') === 0) {
-      $isValid = password_verify($password, $utilisateur['password']);
-    } else {
-      $isValid = $password === $utilisateur['password'];
+// Si le formulaire a été soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupération et nettoyage des champs
+    $idd = trim($_POST['identifiant']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['motdepasse']);
+
+    // Étape 1 : Vérifier que l'email existe dans la table utilisateur
+    $stmtUser = $pdo->prepare("SELECT * FROM utilisateur WHERE email = :email");
+    $stmtUser->execute([':email' => $email]);
+    $utilisateur = $stmtUser->fetch(PDO::FETCH_ASSOC);
+
+    $isValid = false;
+
+    if ($utilisateur) {
+        $hash = $utilisateur['password'];
+
+        // Vérifier si le mot de passe stocké est bien un hash bcrypt ou argon2
+        if ((strlen($hash) > 30 && strpos($hash, '$2y$') === 0) || strpos($hash, '$argon2') === 0) {
+            // Comparaison sécurisée via password_verify
+            $isValid = password_verify($password, $hash);
+        } else {
+            // Cas exceptionnel : mot de passe stocké en clair (non recommandé)
+            $isValid = $password === $hash;
+        }
     }
-  }
-  if (!$utilisateur || !$isValid) {
-    $message = "Email ou mot de passe incorrect.";
-  } else {
-    // 2. Vérifier que l'email existe dans etudiant
-    $stmtEtudiant = $pdo->prepare("SELECT * FROM etudiant WHERE email = :email");
-    $stmtEtudiant->execute([':email' => $email]);
-    $etudiant = $stmtEtudiant->fetch(PDO::FETCH_ASSOC);
-    if (!$etudiant) {
-      $message = "Aucun étudiant trouvé avec cet email.";
+
+    if (!$utilisateur || !$isValid) {
+        $message = "Email ou mot de passe incorrect.";
     } else {
-      // 3. Vérifier qu'il existe une demande avec cet IDD et cet email
-      $stmtDemande = $pdo->prepare("SELECT * FROM demande WHERE IDD = :idd AND email = :email");
-      $stmtDemande->execute([':idd' => $idd, ':email' => $email]);
-      $demande = $stmtDemande->fetch(PDO::FETCH_ASSOC);
-      if (!$demande) {
-        $message = "Aucune demande trouvée avec cet identifiant et cet email.";
-      } else {
-        // 4. Rediriger vers demande.php avec les infos de la demande
-        // Correction : forcer les clés en minuscules pour l'URL
-        $params = http_build_query([
-          'idd' => $demande['IDD'],
-          'email' => $demande['email']
-        ]);
-        header("Location: demande.php?" . $params);
-        exit;
-      }
+        // Étape 2 : Vérifier l'existence de l'étudiant dans la table etudiant
+        $stmtEtudiant = $pdo->prepare("SELECT * FROM etudiant WHERE email = :email");
+        $stmtEtudiant->execute([':email' => $email]);
+        $etudiant = $stmtEtudiant->fetch(PDO::FETCH_ASSOC);
+
+        if (!$etudiant) {
+            $message = "Aucun étudiant trouvé avec cet email.";
+        } else {
+            // Étape 3 : Vérifier que la demande existe
+            $stmtDemande = $pdo->prepare("SELECT * FROM demande WHERE IDD = :idd AND email = :email");
+            $stmtDemande->execute([':idd' => $idd, ':email' => $email]);
+            $demande = $stmtDemande->fetch(PDO::FETCH_ASSOC);
+
+            if (!$demande) {
+                $message = "Aucune demande trouvée avec cet identifiant et cet email.";
+            } else {
+                // Étape 4 : Redirection vers la page détail demande avec les paramètres GET
+                $params = http_build_query([
+                    'idd' => $demande['IDD'],
+                    'email' => $demande['email']
+                ]);
+                header("Location: demande.php?" . $params);
+                exit;
+            }
+        }
     }
-  }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

@@ -77,7 +77,6 @@
       height: 100%;
       object-fit: cover;
     }
-    /* Overlay pour le nom */
     .university-name {
       position: absolute;
       bottom: 0;
@@ -101,40 +100,40 @@
     .footer-content {  
         display: flex;  
         justify-content: space-between;  
-        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace est insuffisant */  
+        flex-wrap: wrap;   
         padding: 20px 0;  
     }  
 
     .footer-info,  
     .footer-links,  
     .footer-contact {  
-        flex: 1; /* Équitablement répartir l'espace */  
-        min-width: 200px; /* Largeur minimale */  
-        margin: 10px; /* Espacement autour de chaque section */  
+        flex: 1;  
+        min-width: 200px;  
+        margin: 10px;  
     }  
 
     .footer-links ul {  
-        list-style-type: none; /* Suppression des puces */  
-        padding: 0; /* Suppression du padding */  
+        list-style-type: none;  
+        padding: 0;  
     }  
 
     .footer-links a {  
-        color: white; /* Couleur des liens */  
-        text-decoration: none; /* Pas de soulignement */  
+        color: white;  
+        text-decoration: none;  
     }  
 
     .footer-links a:hover {  
-        text-decoration: underline; /* Soulignement lors du survol */  
+        text-decoration: underline;  
     }  
 
     .footer-bottom {  
-        text-align: center; /* Centre le texte */  
-        margin-top: 20px; /* Espace au-dessus */  
+        text-align: center;  
+        margin-top: 20px;  
     }  
 
     hr {  
-        border: 1px solid white; /* Couleur et épaisseur de la ligne */  
-        margin: 10px 0; /* Espacement autour de la ligne */  
+        border: 1px solid white;  
+        margin: 10px 0;  
     } 
   </style>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -159,7 +158,6 @@
   </div>
 
   <div class="universities-container">
-    
     <div class="university-card">
       <a href="Université polytechnique de Saint-Pétersbourg.html" target="_blank">
         <img src="Université polytechnique de Saint-Pétersbourg.jpg" alt="Université polytechnique de Saint-Pétersbourg">
@@ -167,7 +165,6 @@
       <div class="university-name">Université polytechnique de Saint-Pétersbourg</div>
     </div>
 
-    <!-- Université d'État de Saint-Pétersbourg -->
     <div class="university-card">
       <a href="Université d'État de Saint-Pétersbourg.html" target="_blank"> 
         <img src="saint.jpg" alt="Université d'État de Saint-Pétersbourg">
@@ -175,14 +172,12 @@
       <div class="university-name">Université d'État de Saint-Pétersbourg</div>
     </div>
 
-     
     <div class="university-card">
      <a href="Université d'État de médecine de l'Oural.html">
       <img src="oural.jpg" alt="Université d'État de médecine de l'Oural">
       <div class="university-name">Université d'État de médecine de l'Oural</div>
     </div></a> 
 
-    
     <div style="flex-basis: 100%; height: 0;"></div>
  
     <div class="university-card">
@@ -198,43 +193,37 @@
       <div class="university-name">Université d’État de médecine de bachkir</div></a>
     </div>
 
-    
     <div class="university-card">
       <a href="Université financière de Moscou russie.html">
         <img src="finance.jpg" alt="Université financière de Moscou ">
       <div class="university-name">Université financière de Moscou </div>
     </a>
   </div>
- 
+
     <div style="flex-basis: 100%; height: 0;"></div>
 
-    <!-- Université d'État de Samara -->
     <div class="university-card">
       <a href="Université économique de l'Oural.html"> 
         <img src="ecoo.jpg" alt="Université économique de l'Oura ">
       <div class="university-name">Université économique de l'Oural </div>
     </a>
-     
     </div>
 
-    <!-- Université d'État de Rostov -->
     <div class="university-card">
       <a href="Université forestière d’État de Saint-Pétersbourg .html">
          <img src="foret.jpg" alt="Université forestière d’État de Saint-Pétersbourg  ">
       <div class="university-name">Université forestière d’État de Saint-Pétersbourg  </div>
     </a>
-     
     </div>
 
-    <!-- Université Fédérale de Perm -->
     <div class="university-card">
       <a href="Université d’agriculture d’État de Karsandar .html"> 
         <img src="kasander.png" alt=" Université d’agriculture d’État de Karsandar ">
       </a>
-    
       <div class="university-name"> Université d’agriculture d’État de Karsandar </div>
     </div>
   </div>
+
   <div class="footer-section">  
     <div class="footer-content">  
         <div class="footer-info">  
@@ -261,9 +250,9 @@
     <div class="footer-bottom">  
         <p>&copy; <span id="current-year">2025</span> Trust Education. Tous droits réservés.</p>  
     </div>  
-</div>
+  </div>
 
-  <script>   document.getElementById('current-year').textContent = new Date().getFullYear();</script>  
+  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>  
   <script>
   document.getElementById('ville-select').addEventListener('change', function() {
     var url = this.value;

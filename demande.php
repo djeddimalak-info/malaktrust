@@ -1,26 +1,26 @@
 <?php  
- 
-$host='127.0.0.1'; $dbname='trusteducation'; $user='root'; $pass='';  
-try { $pdo=new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",$user,$pass); }  
-catch (PDOException $e) { die("Erreur : ". $e->getMessage()); }  
+$host='127.0.0.1'; 
+$dbname='trusteducation'; 
+$user='root'; 
+$pass='';  
 
+try { 
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass); 
+} catch (PDOException $e) { 
+    die("Erreur : " . $e->getMessage()); 
+}  
 
 if (isset($_GET['idd']) && isset($_GET['email'])) {  
     $idd = trim($_GET['idd']);  
     $email = trim($_GET['email']);  
     
-  
-    $stmt = $pdo->prepare("SELECT * FROM demande WHERE IDD=:idd AND email=:email");  
-    $stmt->execute([':idd'=>$idd, ':email'=>$email]);  
+    $stmt = $pdo->prepare("SELECT * FROM demande WHERE IDD = :idd AND email = :email");  
+    $stmt->execute([':idd' => $idd, ':email' => $email]);  
     $demande = $stmt->fetch(PDO::FETCH_ASSOC);  
-     
 } else {  
     $demande = null;  
 }  
-
- 
- 
-?>  
+?>
 <!DOCTYPE html>  
 <html lang="fr">  
 <head>  
@@ -131,7 +131,7 @@ if (isset($_GET['idd']) && isset($_GET['email'])) {
       .list-group-item { padding: 12px 8px; font-size: 1em; }
       .card-header { font-size: 1.1em; padding: 18px 0 10px 0; }
     }
-  </style>
+</style>
 </head>  
 <body>  
   <div class="container">
@@ -141,35 +141,37 @@ if (isset($_GET['idd']) && isset($_GET['email'])) {
         <i class="fas fa-file-alt"></i> Détail de votre demande d'études
       </div>
       <ul class="list-group list-group-flush">
+        <?php
+          $icons = [
+            'IDD' => 'fa-hashtag',
+            'email' => 'fa-envelope',
+            'Object' => 'fa-book',
+            'objet' => 'fa-book',
+            'Message' => 'fa-comment',
+            'universite' => 'fa-university',
+            'special_ite' => 'fa-graduation-cap',
+            'niveau' => 'fa-layer-group',
+            'date_creation' => 'fa-calendar-alt',
+            'password' => 'fa-key',
+          ];
+        ?>
         <?php foreach ($demande as $key => $value): ?>
+          <?php if ($key !== 'password'): ?>
           <li class="list-group-item d-flex align-items-center">
             <?php
-              
-              $icons = [
-                'IDD' => 'fa-hashtag',
-                'email' => 'fa-envelope',
-                'Object' => 'fa-book',
-                'objet' => 'fa-book',
-                'Message' => 'fa-comment',
-                'universite' => 'fa-university',
-                'special_ite' => 'fa-graduation-cap',
-                'niveau' => 'fa-layer-group',
-                'date_creation' => 'fa-calendar-alt',
-              ];
               $icon = isset($icons[$key]) ? $icons[$key] : 'fa-info-circle';
             ?>
             <span class="label mr-2"><i class="fas <?php echo $icon; ?>"></i></span>
             <span class="label mr-2"><?php echo htmlspecialchars($key); ?> :</span>
             <span><?php echo nl2br(htmlspecialchars($value)); ?></span>
           </li>
+          <?php endif; ?>
         <?php endforeach; ?>
       </ul>
     </div>
     <form method="post" class="text-center mt-4">
       <input type="hidden" name="idd" value="<?php echo htmlspecialchars($demande['IDD']); ?>">
       <input type="hidden" name="email" value="<?php echo htmlspecialchars($demande['email']); ?>">
- 
-     
       <a href="pageaccueil.html" class="btn btn-darkblue mb-2"><i class="fas fa-home"></i> Retour à l'accueil</a>
     </form>
     <?php else: ?>

@@ -23,6 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($email) || empty($motdepasse) || empty($numero_de_telephone) || empty($prenom) || empty($nom) || empty($date_naissance)) {
         $message = "Veuillez remplir tous les champs obligatoires.";
+    } elseif (!preg_match('/^0[675][0-9]{8}$/', $numero_de_telephone)) {
+        $message = "Le numéro de téléphone doit commencer par 05, 06 ou 07 et contenir 9 chiffres au total.";
+    } elseif (!preg_match('/^(?=.*[a-zA-Z])(?=.*\d).+$/', $motdepasse)) {
+        $message = "Le mot de passe doit contenir au moins une lettre et un chiffre.";
     } else {
         $stmt = $conn->prepare("SELECT * FROM utilisateur WHERE email = :email");
         $stmt->execute([':email' => $email]);
@@ -44,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt2 = $conn->prepare("INSERT INTO etudiant (email) VALUES (:email)");
             $stmt2->execute([':email' => $email]);
 
-            $message = "Compte étudiant créé avec succès !.";
+            $message = "Compte étudiant créé avec succès !";
         }
     }
 }

@@ -417,79 +417,11 @@ if (isset($_GET['success']) && $_GET['success'] == '1') {
     </style>
 </head>
 <body>
-    <!-- BARRE DE NAVIGATION COPIÉE DE pageaccueil.html (structure, classes, HTML, sans adaptation) -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #f8f9fa; padding-left: 10px; padding-right: 10px;">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="your-logo.png" alt="Logo" />
-            </a>
-            <span style="color:rgb(5, 39, 50); font-size: 1.3em;" class="navbar-text">Trust Education</span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="pageaccueil.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="propos.html">À propos</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUniversities" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Universités
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownUniversities">
-                            <a class="dropdown-item" href="pologne.html">Université polonaise</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="russie.html">Université russe</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Langues
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownLanguages">
-                            <a class="dropdown-item" href="applicationslangues.html">Applications de langues</a>
-                            <a class="dropdown-item" href="ecoleslangues.html">Écoles de langues</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLanguages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Payes
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownLanguages">
-                            <a class="dropdown-item" href="Payes.html">Russie</a>
-                            <a class="dropdown-item" href="payes1.html">Pologne</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Connexion
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="creercompteAA.html">Assistant</a>
-                            <a class="dropdown-item" href="creercompte.html">Étudiant</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dashoard
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="login.php?redirect=dashbord.php"> Dashoard</a>
-                            <a class="dropdown-item" href="login.php?redirect=DashboardTraduction.php"> Dashoard Traduction</a>
-                            <a class="dropdown-item" href="login.php?redirect=dashboardpsy.php"> Dashoard Psychologue</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <br><br><br>
-
+  
     <div class="container my-4">
         <h2 class="text-center mb-4"> Traduire vos documents</h2>
         <?php if (isset($message) && !empty($message)) echo $message; ?>
-        <!-- Formulaire -->
+      
         <form method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="email" class="form-label"><i class="fa-solid fa-envelope"></i> Adresse Email</label>
